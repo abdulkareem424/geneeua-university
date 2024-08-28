@@ -4,42 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geneva International University</title>
+    <title>Geneva International University</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+<style>
+     footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+
+        .footer-link {
+            color: #d4af37;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+        }
+
+        .social-icon {
+            color: #d4af37;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+</style>
 <body class="min-h-screen flex flex-col">
     <header class="bg-black text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center">
-                <img src="https://picsum.photos/100/100?random=1" alt="University Logo" class="w-12 h-12 rounded-full mr-4">
+                <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-12 h-12 rounded-full mr-4">
                 <h1 class="text-2xl font-bold logo-text">Geneva International University</h1>
             </div>
             <nav class="hidden md:block">
                 <ul class="flex space-x-4">
-                    <li><a href="#" class="hover:text-primary-color transition">Home</a></li>
-                    <li><a href="#" class="hover:text-primary-color transition">About</a></li>
-                    <li><a href="#" class="hover:text-primary-color transition">Academics</a></li>
-                    <li><a href="#" class="hover:text-primary-color transition">Research</a></li>
+                    <li><a href="index.html" class="hover:text-primary-color transition">Home</a></li>
+                    <li><a href="contact.html" class="hover:text-primary-color transition">Contac</a></li>
+                    <li><a href="courses.html" class="hover:text-primary-color transition">Courses</a></li>
+                    <li><a href="admission.html" class="hover:text-primary-color transition">Admuission</a></li>
                 </ul>
             </nav>
-            <div class="md:hidden">
+           
+            <button class="btn-primary px-4 py-2 rounded-full hover:bg-secondary-color transition" onclick="location.href='login.html'">Login</button>
+             <div class="md:hidden">
                 <button id="menu-toggle" class="text-2xl">☰</button>
             </div>
-            <button class="btn-primary px-4 py-2 rounded-full hover:bg-secondary-color transition">Login</button>
         </div>
     </header>
 
     <div id="side-menu" class="side-menu neumorphic p-4">
         <button id="close-menu" class="text-2xl mb-4">×</button>
         <ul class="space-y-4">
-            <li><a href="#" class="text-lg">Home</a></li>
-            <li><a href="#" class="text-lg">About</a></li>
-            <li><a href="#" class="text-lg">Academics</a></li>
-            <li><a href="#" class="text-lg">Research</a></li>
+            <li><a href="index.html" class="text-lg">Home</a></li>
+            <li><a href="contact.html" class="text-lg">Contact</a></li>
+            <li><a href="courses.html" class="text-lg">Courses</a></li>
+            <li><a href="admission.html" class="text-lg">Admuission</a></li>
         </ul>
     </div>
-
     <div id="overlay" class="overlay"></div>
 
     <main class="flex-grow container mx-auto p-4">
@@ -47,13 +76,81 @@
             <input type="text" placeholder="Search..." class="search-bar neumorphic w-full p-4 text-lg">
         </div>
 
-        <section class="hero mb-12 relative overflow-hidden rounded-lg">
-            <img src="https://picsum.photos/1200/600?random=2" alt="University Campus" class="w-full h-auto">
-            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                <p class="text-white text-2xl text-center px-4">Welcome to Geneva International University, where knowledge meets innovation.</p>
+        <section class="hero mb-12 relative overflow-hidden rounded-lg h-[800px]" style="background-image: url('images/pexels-enginakyurt-2952871.jpg'); background-size: cover; background-repeat: no-repeat;" >
+            
+            <div class="absolute inset-0 bg-cover bg-center" ></div>
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            <div class="absolute inset-0 flex items-center justify-between px-12">
+                <div class="w-1/3">
+                    <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-48 h-48  shadow-lg">
+                </div>
+                <div class="w-2/3 text-white">
+                    <h2 class="text-4xl font-bold mb-4">Geneva International University</h2>
+                    <h3 class="text-4xl font-bold">How it Works</h3>
+                    <p class="text-xl mb-6">Each student at GENEVA IU has a personal, customized path that is specifically built for their goals, skill level, and pace. Regardless of where they are located around the world, our students receive quality education from licensed teachers who are always available through online channels. We’re here to provide the flexible learning experience you need.</p>
+                    <button id="learn-more-btn" class="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition duration-300">Learn More</button>
+                </div>
+            </div>
+            <div id="university-info" class="hidden absolute inset-0 bg-white bg-opacity-90 p-8 overflow-y-auto">
+                <button id="close-info" class="absolute top-4 right-4 text-3xl">&times;</button>
+                <h3 class="text-3xl font-bold mb-4">About Geneva International University</h3>
+                <p class="mb-4">Here at Geneva International University, we are committed to pioneering the integration of tradition and innovation within the realm of online education. Founded in 2016 initially as the Quality of Life Institute in Lebanon and reestablished in December 2023 as Geneva International University, we have broadened our scope to provide extensive online undergraduate and postgraduate programs worldwide. Our commitment to enhancing educational accessibility has evolved into a dedication to upholding global education standards and achieving online learning excellence.
+
+ 
+
+                    Geneva International University is dedicated to offering educational programs that meet and surpass the highest standards of academic excellence. Our vibrant online learning environment is enriched by expert faculty members who are focused on equipping students from varied backgrounds with the knowledge, skills, and competencies needed to excel in their chosen fields and to make significant contributions to their communities.​
+                    
+                     
+                    
+                    Thank you for choosing Geneva International University. We look forward to supporting your educational journey and celebrating your future successes. 
+                    
+                     
+                    
+                     
+                    
+                    Warm regards,
+                    
+                     
+                    
+                    Dr. S. Al Hariri Founder,
+                    
+                    International University Of Geneva</p>
+                <p class="mb-4">OUR GOALS:</p>
+                <ul class="list-disc list-inside mb-4">
+                    <li>Excellence in Education: To cultivate and reward excellence in the acquisition, advancement, and dissemination of knowledge.</li>
+                    <li>Personal and Professional Fulfillment: To guide students in applying their knowledge and skills towards achieving personal and professional fulfillment.</li>
+                    <li>Cultural Appreciation: To foster an appreciation of the historical and ongoing development of human culture.</li>
+                    <li>Critical Skills Development: To develop critical thinking, effective communication, and lifelong learning skills.</li>
+                    <li>Ethical Values: To promote the values of ethical behavior, responsibility, and commitment</li>
+                    <li>Diverse Learning Opportunities: To provide academic programs, services, facilities, and technologies that offer diverse opportunities for learning.</li>
+                    <li>Qualified Educators: To recruit and retain a diverse faculty of qualified educators, providing an environment conducive to their growth as teachers and scholars.</li>
+                    <li>Intercultural Understanding: To foster intercultural understanding, preparing students to be active members of the global community.</li>
+                    <li>Economic and Societal Contribution: To contribute to the economic and societal development of Geneva, Switzerland, and beyond.</li>
+                </ul>
+               
             </div>
         </section>
-
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const learnMoreBtn = document.getElementById('learn-more-btn');
+                const universityInfo = document.getElementById('university-info');
+                const closeInfoBtn = document.getElementById('close-info');
+        
+                learnMoreBtn.addEventListener('click', function() {
+                    universityInfo.classList.remove('hidden');
+                    gsap.from(universityInfo, {opacity: 0, y: 50, duration: 0.5});
+                });
+        
+                closeInfoBtn.addEventListener('click', function() {
+                    gsap.to(universityInfo, {
+                        opacity: 0, 
+                        y: 50, 
+                        duration: 0.5, 
+                        onComplete: () => universityInfo.classList.add('hidden')
+                    });
+                });
+            });
+        </script>
         <section class="news-section mb-12">
             <h2 class="text-3xl font-bold mb-6 text-primary-color">Latest News</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -83,21 +180,138 @@
                 </div>
             </div>
         </section>
-
-        <section class="calendar-section">
-            <h2 class="text-3xl font-bold mb-6 text-primary-color">Upcoming Events</h2>
-            <div class="calendar neumorphic p-4">
-                <!-- Calendar will be populated by JavaScript -->
-            </div>
-        </section>
     </main>
 
-    <footer class="bg-black text-white py-8 mt-12">
-        <div class="container mx-auto text-center">
-            <p>&copy; 2023 Geneva International University. All rights reserved.</p>
+    <footer class="text-center lg:text-left">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div>
+                    <h6 class="uppercase font-semibold mb-4 flex justify-center lg:justify-start">
+                        Quick Links
+                    </h6>
+                    <p class="mb-4">
+                        <a href="index.html" class="footer-link">Home</a>
+                    </p>
+                    <p class="mb-4">
+                        <a href="admission.html" class="footer-link">Admissions</a>
+                    </p>
+                    <p class="mb-4">
+                        <a href="contact.html" class="footer-link">Contact</a>
+                    </p>
+                    <p>
+                        <a href="courses.html" class="footer-link">Courses</a>
+                    </p>
+                </div>
+                <div>
+                    <h6 class="uppercase font-semibold mb-4 flex justify-center lg:justify-start">
+                        Contact
+                    </h6>
+                    <p class="flex items-center justify-center lg:justify-start mb-4">
+                        <i class="fas fa-home mr-4 text-gray-400"></i> Geneva, CH 1234, Switzerland
+                    </p>
+                    <p class="flex items-center justify-center lg:justify-start mb-4">
+                        <i class="fas fa-envelope mr-4 text-gray-400"></i> info@giu.edu
+                    </p>
+                    <p class="flex items-center justify-center lg:justify-start mb-4">
+                        <i class="fas fa-phone mr-4 text-gray-400"></i> + 41 234 567 88
+                    </p>
+                </div>
+                <div>
+                    <h6 class="uppercase font-semibold mb-4 flex justify-center lg:justify-start">
+                        Follow Us
+                    </h6>
+                    <div class="flex justify-center lg:justify-start">
+                        <a href="#!" class="mr-6 social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#!" class="mr-6 social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#!" class="mr-6 social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#!" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
+       
     </footer>
+ <div class="text-center p-6 bg-black">         
+            <a class="footer-link font-semibold" href="#"><span style="color: #ffffff;">© 2023 Copyright:</span>Geneva International University</a>
+        </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelector('form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would typically handle the login process
+                alert('Login functionality would be implemented here.');
+            });
 
-    <script src="script.js">   </script>
+            // Add subtle animation to form inputs
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                input.addEventListener('blur', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+      <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+      
+        // Page transition effect
+        document.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function(e) {
+            if (this.hostname === window.location.hostname) {
+              e.preventDefault();
+              document.body.classList.add('fade-out');
+              setTimeout(() => {
+                window.location = this.href;
+              }, 300);
+            }
+          });
+        });
+      
+        // Fade in on page load
+        window.addEventListener('pageshow', function(event) {
+          if (event.persisted) {
+            document.body.classList.remove('fade-out');
+          }
+        });
+      
+        // Smooth scroll animation for footer links
+        document.querySelectorAll('footer a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+            });
+          });
+        });
+      </script>
+      
+      <style>
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      
+        footer {
+          animation: fadeIn 0.5s ease-out;
+        }
+        .fade-out {
+          opacity: 0;
+          transition: opacity 0.3s ease-out;
+        }
+      </style>
+      <script src="script.js"></script>
 </body>
 </html>
