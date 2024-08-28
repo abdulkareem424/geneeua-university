@@ -1,27 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>genua university</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Geneva International University</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <h1>Welcome to genua university</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="courses.html">Courses</a></li>
-                <li><a href="admission.html">Admission</a></li>
-                <li><a href="team.html">Our Team</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+<body class="min-h-screen flex flex-col">
+    <header class="bg-black text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://picsum.photos/100/100?random=1" alt="University Logo" class="w-12 h-12 rounded-full mr-4">
+                <h1 class="text-2xl font-bold logo-text">Geneva International University</h1>
+            </div>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="hover:text-primary-color transition">Home</a></li>
+                    <li><a href="#" class="hover:text-primary-color transition">About</a></li>
+                    <li><a href="#" class="hover:text-primary-color transition">Academics</a></li>
+                    <li><a href="#" class="hover:text-primary-color transition">Research</a></li>
+                </ul>
+            </nav>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-2xl">☰</button>
+            </div>
+            <button class="btn-primary px-4 py-2 rounded-full hover:bg-secondary-color transition">Login</button>
+        </div>
     </header>
-    <section>
-        <h2>About Us</h2>
-        <p>Our university in the UAE is committed to providing top-quality education and research opportunities...</p>
-    </section>
+
+    <div id="side-menu" class="side-menu neumorphic p-4">
+        <button id="close-menu" class="text-2xl mb-4">×</button>
+        <ul class="space-y-4">
+            <li><a href="#" class="text-lg">Home</a></li>
+            <li><a href="#" class="text-lg">About</a></li>
+            <li><a href="#" class="text-lg">Academics</a></li>
+            <li><a href="#" class="text-lg">Research</a></li>
+        </ul>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+
+    <main class="flex-grow container mx-auto p-4">
+        <div class="search-bar-container mb-8">
+            <input type="text" placeholder="Search..." class="search-bar neumorphic w-full p-4 text-lg">
+        </div>
+
+        <section class="hero mb-12 relative overflow-hidden rounded-lg">
+            <img src="https://picsum.photos/1200/600?random=2" alt="University Campus" class="w-full h-auto">
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                <p class="text-white text-2xl text-center px-4">Welcome to Geneva International University, where knowledge meets innovation.</p>
+            </div>
+        </section>
+
+        <section class="news-section mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-primary-color">Latest News</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="news-card neumorphic p-4">
+                    <img src="https://picsum.photos/400/300?random=3" alt="News 1" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Groundbreaking Research</h3>
+                    <p>Our scientists have made a significant breakthrough in renewable energy technology.</p>
+                    <div class="news-overlay">
+                        <p class="news-explanation">Our research team has developed a new solar panel technology that increases efficiency by 40%, potentially revolutionizing the renewable energy sector.</p>
+                    </div>
+                </div>
+                <div class="news-card neumorphic p-4">
+                    <img src="https://picsum.photos/400/300?random=4" alt="News 2" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">New Academic Programs</h3>
+                    <p>Introducing our new AI and Machine Learning degree program starting next semester.</p>
+                    <div class="news-overlay">
+                        <p class="news-explanation">Our cutting-edge AI and Machine Learning program is designed to prepare students for the future of technology, with hands-on projects and industry partnerships.</p>
+                    </div>
+                </div>
+                <div class="news-card neumorphic p-4">
+                    <img src="https://picsum.photos/400/300?random=5" alt="News 3" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Campus Expansion</h3>
+                    <p>Construction begins on our state-of-the-art Science and Technology Center.</p>
+                    <div class="news-overlay">
+                        <p class="news-explanation">The new Science and Technology Center will feature advanced laboratories, collaborative spaces, and cutting-edge equipment to support our growing research initiatives.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="calendar-section">
+            <h2 class="text-3xl font-bold mb-6 text-primary-color">Upcoming Events</h2>
+            <div class="calendar neumorphic p-4">
+                <!-- Calendar will be populated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black text-white py-8 mt-12">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2023 Geneva International University. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js">   </script>
 </body>
 </html>
