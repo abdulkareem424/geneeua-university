@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <style>
-     footer {
+    footer {
             background-color: #1a1a1a;
             color: #ffffff;
             padding: 2rem 0;
@@ -41,7 +41,7 @@
     <header class="bg-black text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center">
-                <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-12 h-12 rounded-full mr-4">
+                <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-12 h-12 rounded-md mr-8" style="background-color:  #fafafa;">
                 <h1 class="text-2xl font-bold logo-text">Geneva International University</h1>
             </div>
             <nav class="hidden md:block">
@@ -52,8 +52,8 @@
                     <li><a href="admission.html" class="hover:text-primary-color transition">Admuission</a></li>
                 </ul>
             </nav>
-           
-            <button class="btn-primary px-4 py-2 rounded-full hover:bg-secondary-color transition" onclick="location.href='login.html'">Login</button>
+        
+            <button class="btn-primary px-4 py-2 rounded-full hover:bg-secondary-color transition" onclick="location.href='login.html'" style="padding: 10px; margin-left:10 ;">Login</button>
              <div class="md:hidden">
                 <button id="menu-toggle" class="text-2xl">☰</button>
             </div>
@@ -81,10 +81,10 @@
             <div class="absolute inset-0 bg-cover bg-center" ></div>
             <div class="absolute inset-0 bg-black bg-opacity-50"></div>
             <div class="absolute inset-0 flex items-center justify-between px-12">
-                <div class="w-1/3">
-                    <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-48 h-48  shadow-lg">
+                <div class="w-1/3" >
+                    <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-37 h-37  shadow-lg">
                 </div>
-                <div class="w-2/3 text-white">
+                <div class="w-2/3 text-white" style="margin-top: 30px;">
                     <h2 class="text-4xl font-bold mb-4">Geneva International University</h2>
                     <h3 class="text-4xl font-bold">How it Works</h3>
                     <p class="text-xl mb-6">Each student at GENEVA IU has a personal, customized path that is specifically built for their goals, skill level, and pace. Regardless of where they are located around the world, our students receive quality education from licensed teachers who are always available through online channels. We’re here to provide the flexible learning experience you need.</p>
@@ -96,21 +96,21 @@
                 <h3 class="text-3xl font-bold mb-4">About Geneva International University</h3>
                 <p class="mb-4">Here at Geneva International University, we are committed to pioneering the integration of tradition and innovation within the realm of online education. Founded in 2016 initially as the Quality of Life Institute in Lebanon and reestablished in December 2023 as Geneva International University, we have broadened our scope to provide extensive online undergraduate and postgraduate programs worldwide. Our commitment to enhancing educational accessibility has evolved into a dedication to upholding global education standards and achieving online learning excellence.
 
- 
+
 
                     Geneva International University is dedicated to offering educational programs that meet and surpass the highest standards of academic excellence. Our vibrant online learning environment is enriched by expert faculty members who are focused on equipping students from varied backgrounds with the knowledge, skills, and competencies needed to excel in their chosen fields and to make significant contributions to their communities.​
                     
-                     
+                    
                     
                     Thank you for choosing Geneva International University. We look forward to supporting your educational journey and celebrating your future successes. 
                     
-                     
                     
-                     
+                    
+                    
                     
                     Warm regards,
                     
-                     
+                    
                     
                     Dr. S. Al Hariri Founder,
                     
@@ -127,7 +127,7 @@
                     <li>Intercultural Understanding: To foster intercultural understanding, preparing students to be active members of the global community.</li>
                     <li>Economic and Societal Contribution: To contribute to the economic and societal development of Geneva, Switzerland, and beyond.</li>
                 </ul>
-               
+        
             </div>
         </section>
         <script>
@@ -237,9 +237,9 @@
                 </div>
             </div>
         </div>
-       
+    
     </footer>
- <div class="text-center p-6 bg-black">         
+<div class="text-center p-6 bg-black">         
             <a class="footer-link font-semibold" href="#"><span style="color: #ffffff;">© 2023 Copyright:</span>Geneva International University</a>
         </div>
     <script>
@@ -262,18 +262,18 @@
             });
         });
     </script>
-      
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-      <script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-      
+    
         // Page transition effect
         document.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', function(e) {
+        link.addEventListener('click', function(e) {
             if (this.hostname === window.location.hostname) {
-              e.preventDefault();
-              document.body.classList.add('fade-out');
-              setTimeout(() => {
+            e.preventDefault();
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
                 window.location = this.href;
               }, 300);
             }

@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #D4AF37; /* Gold */
+    --primary-color: #c49e23; /* Gold */
     --secondary-color: #8B4513; /* Brown */
     --background-color: #F5F5F5; /* Light gray */
     --text-color: #333333; /* Dark gray */
@@ -161,6 +161,7 @@ body {
 
 #learn-more-btn {
     transition: all 0.3s ease;
+    margin-bottom: 30px;
 }
 
 #learn-more-btn:hover {
