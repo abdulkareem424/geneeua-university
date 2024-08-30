@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prestigious University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --black: #333333;
+            --white: #FFFFFF;
+            --light-gray: #F0F0F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--black);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        .containe{
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            
+        }
+
+        header {
+            background-color: var(--white);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-gray);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .about {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .university-logo {
+            width: 150px;
+            height: auto;
+         transform: translateX(340%);
+        }
+
+        .about-description {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+        }
+
+        .philosophy {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .philosophy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .goals {
+            padding: 80px 0;
+        }
+
+        .goals-list {
+            max-width: 800px;
+            margin: 0 auto;
+            list-style: none;
+        }
+
+        .goals-list li {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .goals-list li::before {
+            content: '•';
+            color: var(--gold);
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .image-showcase {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .showcase-image {
+            width: 48%;
+            height: 900px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .showcase-image:hover {
+            transform: scale(1.05);
+        }
+
+        .why-choose-us {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .reasons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .reason {
+            width: 48%;
+        }
+
+        .reason h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .image-gallery {
+            padding: 80px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 345px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+
+        .image-description {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .image-description {
+            transform: translateY(0);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .modal-image {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .modal-description {
+            color: var(--white);
+            margin-top: 20px;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        .close {
+            color: var(--white);
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .image-slider {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .slider-image {
+            position: absolute;
+        
+        
+          
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slider-image.active {
+            opacity: 1;
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            color: var(--white);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .slider-arrow.left {
+            left: 10px;
+        }
+
+        .slider-arrow.right {
+            right: 10px;
+        }
+        footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 2rem 0;
+            margin-top: auto;
+        }
+
+        .footer-link {
+            color: #d4af37;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #ffffff;
+        }
+
+        .social-icon {
+            color: #d4af37;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #ffffff;
+            transform: translateY(-3px);
+        }
+    </style>
+    
+</head>
+<body>
+    <header class="bg-black text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-12 h-12 rounded-full " >
+                <h1 class="text-2xl font-bold logo-text">Geneva International University</h1>
+            </div>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="hover:text-primary-color transition">Home</a></li>
+                    <li><a href="about.html" class="hover:text-primary-color transition">about</a></li>
+                    <li><a href="courses.html" class="hover:text-primary-color transition">Courses</a></li>
+                    <li><a href="admission.html" class="hover:text-primary-color transition">Admuission</a></li>
+                </ul>
+            </nav>
+           
+            <button class="btn-primary px-4 py-2 rounded-full hover:bg-secondary-color transition" onclick="location.href='login.html'">Login</button>
+             <div class="md:hidden">
+                <button id="menu-toggle" class="text-2xl">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="side-menu" class="side-menu neumorphic p-4">
+        <button id="close-menu" class="text-2xl mb-4">×</button>
+        <ul class="space-y-4">
+            <li><a href="index.html" class="text-lg">Home</a></li>
+            <li><a href="about.html" class="text-lg">about</a></li>
+            <li><a href="courses.html" class="text-lg">Courses</a></li>
+            <li><a href="admission.html" class="text-lg">Admuission</a></li>
+        </ul>
+    </div>
+    <script src="script.js"></script>
+    <section id="about" class="about">
+        <div class="containe">
+            <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="university-logo">
+            <h2 class="section-title">About Our University</h2>
+            <p class="about-description">
+                Here at Geneva International University, we are committed to pioneering the integration of tradition and innovation within the realm of online education. Founded in 2016 initially as the Quality of Life Institute in Lebanon and reestablished in December 2023 as Geneva International University, we have broadened our scope to provide extensive online undergraduate and postgraduate programs worldwide. Our commitment to enhancing educational accessibility has evolved into a dedication to upholding global education standards and achieving online learning excellence.
+
+                Geneva International University is dedicated to offering educational programs that meet and surpass the highest standards of academic excellence. Our vibrant online learning environment is enriched by expert faculty members who are focused on equipping students from varied backgrounds with the knowledge, skills, and competencies needed to excel in their chosen fields and to make significant contributions to their communities.​
+                
+                Thank you for choosing Geneva International University. We look forward to supporting your educational journey and celebrating your future successes. 
+                
+                Warm regards,
+                
+                Dr. S. Al Hariri Founder,
+                
+                International University Of Geneva
+            </p>
+        </div>
+    </section>
+
+    <section id="philosophy" class="philosophy">
+        <div class="containe">
+            <h2 class="section-title">Our Philosophy</h2>
+            <div class="philosophy-content">
+                <p>
+                    The Philosophy of the International University of Geneva (IUG), an online university, is rooted in its mission to create a dynamic virtual learning environment. At its core, IUG is a community of learners comprising both students and faculty. Students at IUG seek to acquire knowledge and skills, enriched by exposure to diverse human, cultural, and experiential perspectives. Faculty members engage in scholarly and creative activities that contribute to their disciplines and enhance their teaching. This dual commitment to learning and teaching ensures that knowledge is effectively imparted to students. IUG aims to equip students with the competencies needed to achieve their personal and professional goals after graduation. Faculty members are encouraged to continuously advance their knowledge and expertise, thereby becoming more effective educators. This collective endeavor fosters critical thinking and a commitment to academic excellence, contributing to the betterment of society.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="goals" class="goals">
+        <div class="containe">
+            <h2 class="section-title">University Goals</h2>
+            <ul class="goals-list">
+                <li>Excellence in Education: To cultivate and reward excellence in the acquisition, advancement, and dissemination of knowledge.</li>
+                <li>Personal and Professional Fulfillment: To guide students in applying their knowledge and skills towards achieving personal and professional fulfillment.</li>
+                <li>Cultural Appreciation: To foster an appreciation of the historical and ongoing development of human culture.</li>
+                <li>Critical Skills Development: To develop critical thinking, effective communication, and lifelong learning skills</li>
+                <li>Ethical Values: To promote the values of ethical behavior, responsibility, and commitment.</li>
+                <li>Diverse Learning Opportunities: To provide academic programs, services, facilities, and technologies that offer diverse opportunities for learning.</li>
+                <li>Qualified Educators: To recruit and retain a diverse faculty of qualified educators, providing an environment conducive to their growth as teachers and scholars.</li>
+                <li>Intercultural Understanding: To foster intercultural understanding, preparing students to be active members of the global community.</li>
+                <li>Economic and Societal Contribution: To contribute to the economic and societal development of Geneva, Switzerland, and beyond.</li>
+            </ul>
+            <div class="image-showcase">
+                <img src="images/img6.png" alt="University Campus" class="showcase-image">
+                <img src="images/img7.png" alt="Students in Library" class="showcase-image">
+            </div>
+        </div>
+    </section>
+
+    <section id="why-choose-us" class="why-choose-us">
+        <div class="containe">
+            <h2 class="section-title">Why GENEVA</h2>
+            <div class="reasons">
+                <div class="reason">
+                    <h3>Geneva Courses</h3>
+                    <p>International University of Geneva, we offer a diverse range of courses designed to equip students with the knowledge, skills, and experience needed to excel in their chosen fields. Our courses are structured to provide both theoretical foundations and practical applications, ensuring a holistic and impactful learning experience.</p>
+                </div>
+                <div class="reason">
+                    <h3>Certificate</h3>
+                    <p>Our certificates are designed to provide formal recognition of students' achievements and the skills they have acquired through our rigorous academic programs. Each certificate is a testament to the high standards and international recognition of the International University of Geneva.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="image-gallery">
+        <div class="containe">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/img8.png" alt="University Life 1" class="gallery-image">
+                   
+                </div>
+                <div class="gallery-item">
+                    <img src="images/img9.png" alt="University Life 2" class="gallery-image">
+                   
+                </div>
+                <div class="gallery-item">
+                    <img src="images/img10.png" alt="University Life 3" class="gallery-image">
+                   
+                </div>
+                <div class="gallery-item">
+                    <img src="images/img11.png" alt="University Life 4" class="gallery-image">
+                   
+                   
+                 
+                </div>
+                <div class="gallery-item">
+                    <img src="images/img12.png" alt="University Life 4" class="gallery-image">
+                   
+                   
+                 
+                </div>
+                <div class="gallery-item">
+                    <img src="images/img13.png" alt="University Life 6" class="gallery-image">
+                
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="image-slider">
+        <img src="images/img14.png" alt="Slider Image 1" class="slider-image active">
+        <img src="images/img15.png" alt="Slider Image 2" class="slider-image">
+        <img src="images/img16.png" alt="Slider Image 3" class="slider-image">
+        <img src="images/img17.png" alt="Slider Image 4" class="slider-image">
+        <div class="slider-arrow left">&lt;</div>
+        <div class="slider-arrow right">&gt;</div>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" class="modal-image">
+            <p id="modalDescription" class="modal-description"></p>
+        </div>
+    </div>
+
+    <footer class="text-center lg:text-left">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div>
+                    <h6 class="uppercase font-semibold mb-4 flex justify-center lg:justify-start">
+                        Quick Links
+                    </h6>
+                    <p class="mb-4">
+                        <a href="index.html" class="footer-link">Home</a>
+                    </p>
+                    <p class="mb-4">
+                        <a href="admission.html" class="footer-link">Admissions</a>
+                    </p>
+                    <p class="mb-4">
+                        <a href="about.html" class="footer-link">about</a>
+                    </p>
+                    <p>
+                        <a href="courses.html" class="footer-link">Courses</a>
+                    </p>
+                </div>
+                <div>
+                    <h6 class="uppercase font-semibold mb-4 flex justify-center lg:justify-start">
+                        Contact
+                    </h6>
+                    <p class="flex items-center justify-center lg:justify-start mb-4">
+                        <i class="fas fa-home mr-4 text-gray-400"></i> Geneva, CH 1234, Switzerland
+                    </p>
+                    <p class="flex items-center justify-center lg:justify-start mb-4">
+                        <i class="fas fa-envelope mr-4 text-gray-400"></i> info@giu.edu
+                    </p>
+                    <p class="flex items-center justify-center lg:justify-start mb-4">
+                        <i class="fas fa-phone mr-4 text-gray-400"></i> + 41 234 567 88
+                    </p>
+                </div>
+                <div>
+                    <h6 class="uppercase font-semibold mb-4 flex justify-center lg:justify-start">
+                        Follow Us
+                    </h6>
+                    <div class="flex justify-center lg:justify-start">
+                        <a href="#!" class="mr-6 social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#!" class="mr-6 social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#!" class="mr-6 social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#!" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </footer>
+    <script>
+        // Image gallery functionality
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalDesc = document.getElementById('modalDescription');
+        const closeBtn = document.getElementsByClassName('close')[0];
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                modal.style.display = "block";
+                modalImg.src = this.querySelector('.gallery-image').src;
+                modalDesc.innerHTML = this.querySelector('.image-description').innerHTML;
+            });
+        });
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Image slider functionality
+        const sliderImages = document.querySelectorAll('.slider-image');
+        const prevArrow = document.querySelector('.slider-arrow.left');
+        const nextArrow = document.querySelector('.slider-arrow.right');
+        let currentImageIndex = 0;
+
+        function showImage(index) {
+            sliderImages.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        prevArrow.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + sliderImages.length) % sliderImages.length;
+            showImage(currentImageIndex);
+        });
+
+        nextArrow.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % sliderImages.length;
+            showImage(currentImageIndex);
+        });
+
+        // Auto-slide every 5 seconds
+        setInterval(() => {
+            currentImageIndex = (currentImageIndex + 1) % sliderImages.length;
+            showImage(currentImageIndex);
+        }, 5000);
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
