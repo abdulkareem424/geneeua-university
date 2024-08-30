@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <style>
+    /* على الشاشات الصغيرة، انقل الشعار إلى الأعلى وتنزيل النص إلى الأسفل */
+/* على الشاشات الصغيرة، انقل الشعار إلى الأعلى وتنزيل النص إلى الأسفل */
+
      footer {
             background-color: #1a1a1a;
             color: #ffffff;
@@ -36,6 +39,20 @@
             color: #ffffff;
             transform: translateY(-3px);
         }
+        @media (min-width: 1068px) {
+
+
+  .hero .content {
+    width: 100%;
+    text-align: center;
+  }
+  .con{
+display: flex;
+justify-content: space-between;
+align-items: center;
+  }
+} 
+
 </style>
 <body class="min-h-screen flex flex-col">
     <header class="bg-black text-white p-4">
@@ -47,7 +64,7 @@
             <nav class="hidden md:block">
                 <ul class="flex space-x-4">
                     <li><a href="index.html" class="hover:text-primary-color transition">Home</a></li>
-                    <li><a href="contact.html" class="hover:text-primary-color transition">Contac</a></li>
+                    <li><a href="about.html" class="hover:text-primary-color transition">about</a></li>
                     <li><a href="courses.html" class="hover:text-primary-color transition">Courses</a></li>
                     <li><a href="admission.html" class="hover:text-primary-color transition">Admuission</a></li>
                 </ul>
@@ -64,7 +81,7 @@
         <button id="close-menu" class="text-2xl mb-4">×</button>
         <ul class="space-y-4">
             <li><a href="index.html" class="text-lg">Home</a></li>
-            <li><a href="contact.html" class="text-lg">Contact</a></li>
+            <li><a href="about.html" class="text-lg">about</a></li>
             <li><a href="courses.html" class="text-lg">Courses</a></li>
             <li><a href="admission.html" class="text-lg">Admuission</a></li>
         </ul>
@@ -76,20 +93,19 @@
             <input type="text" placeholder="Search..." class="search-bar neumorphic w-full p-4 text-lg">
         </div>
 
-        <section class="hero mb-12 relative overflow-hidden rounded-lg h-[800px]" style="background-image: url('images/pexels-enginakyurt-2952871.jpg'); background-size: cover; background-repeat: no-repeat;" >
-            
-            <div class="absolute inset-0 bg-cover bg-center" ></div>
+        <section class="hero mb-12 relative overflow-hidden rounded-lg h-[800px] jk"  style="background-image: url('images/pexels-enginakyurt-2952871.jpg'); background-size: cover; background-repeat: no-repeat;">
+            <div class="absolute inset-0 bg-cover bg-center"></div>
             <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-            <div class="absolute inset-0 flex items-center justify-between px-12">
-                <div class="w-1/3">
-                    <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-48 h-48  shadow-lg">
-                </div>
-                <div class="w-2/3 text-white">
-                    <h2 class="text-4xl font-bold mb-4">Geneva International University</h2>
-                    <h3 class="text-4xl font-bold">How it Works</h3>
-                    <p class="text-xl mb-6">Each student at GENEVA IU has a personal, customized path that is specifically built for their goals, skill level, and pace. Regardless of where they are located around the world, our students receive quality education from licensed teachers who are always available through online channels. We’re here to provide the flexible learning experience you need.</p>
-                    <button id="learn-more-btn" class="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition duration-300">Learn More</button>
-                </div>
+            <div class="absolute inset-0  px-12 con">
+              <div class="w-1/3 logo">
+                <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-38 h-38 shadow-lg ko">
+              </div>
+              <div class="w-2/3 content text-white">
+                <h2 class="text-4xl font-bold mb-4">Geneva International University</h2>
+                <h3 class="text-4xl font-bold">How it Works</h3>
+                <p class="text-xl mb-6">Each student at GENEVA IU has a personal, customized path that is specifically built for their goals, skill level, and pace. Regardless of where they are located around the world, our students receive quality education from licensed teachers who are always available through online channels. We’re here to provide the flexible learning experience you need.</p>
+                <button id="learn-more-btn" class="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition duration-300">Learn More</button>
+              </div>
             </div>
             <div id="university-info" class="hidden absolute inset-0 bg-white bg-opacity-90 p-8 overflow-y-auto">
                 <button id="close-info" class="absolute top-4 right-4 text-3xl">&times;</button>
@@ -196,7 +212,7 @@
                         <a href="admission.html" class="footer-link">Admissions</a>
                     </p>
                     <p class="mb-4">
-                        <a href="contact.html" class="footer-link">Contact</a>
+                        <a href="about.html" class="footer-link">about</a>
                     </p>
                     <p>
                         <a href="courses.html" class="footer-link">Courses</a>
