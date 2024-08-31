@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+section {
+    background-color: #f7f7f7;
+    padding: 1em;
+    margin-bottom: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#news-section {
+    width: 50%;
+}
+
+#student-requests-section {
+    width: 50%;
+}
+
+#student-page-section {
+    width: 100%;
+}
+
+#news-list, #student-requests-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#news-list li, #student-requests-list li {
+    padding: 1em;
+    border-bottom: 1px solid #ccc;
+}
+
+#news-list li:last-child, #student-requests-list li:last-child {
+    border-bottom: none;
+}
+
+#student-page-container {
+    padding: 2em;
+}</style>
+
+<body>
+    <header>
+        <h1>University Admin Page</h1>
+    </header>
+    <main>
+        <section id="news-section">
+            <h2>News</h2>
+            <form id="add-news-form">
+                <input type="text" id="news-title" placeholder="News Title">
+                <textarea id="news-content" placeholder="News Content"></textarea>
+                <button id="add-news-btn">Add News</button>
+            </form>
+            <ul id="news-list"></ul>
+        </section>
+        <section id="student-requests-section">
+            <h2>Student Requests</h2>
+            <ul id="student-requests-list"></ul>
+        </section>
+        <section id="student-page-section">
+            <h2>Student Page</h2>
+            <div id="student-page-container"></div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+<script>const newsData = [];
+    const studentRequestsData = [
+        { id: 1, name: 'John Doe', email: 'john.doe@example.com' },
+        { id: 2, name: 'Jane Doe', email: 'jane.doe@example.com' },
+    ];
+    const studentPagesData = {};
+    
+    // Add news form submission handler
+    document.getElementById('add-news-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const newsTitle = document.getElementById('news-title').value;
+        const newsContent = document.getElementById('news-content').value;
+        newsData.push({ title: newsTitle, content: newsContent });
+        renderNewsList();
+    });
+    
+    // Render news list
+    function renderNewsList() {
+        const newsList = document.getElementById('news-list');
+        newsList.innerHTML = '';
+        newsData.forEach((news) => {
+            const newsListItem = document.createElement('li');
+            newsListItem.textContent = ${news.title} - ${news.content};
+            newsList.appendChild(newsListItem);
+        });
+    }
+    
+    // Render student requests list
+    function renderStudentRequestsList() {
+        const studentRequestsList = document.getElementById('student-requests-list');
+        studentRequestsList.innerHTML = '';
+        studentRequestsData.forEach((studentRequest) => {
+            const studentRequestListItem = document.createElement('li');
+            studentRequestListItem.textContent = ${studentRequest.name} - ${studentRequest.email};
+            studentRequestsList.appendChild(studentRequestListItem);
+        });
+    }
+    
+    // Render student page
+    function renderStudentPage(studentId) {
+        const studentPageContainer = document.getElementById('student-page-container');
+        studentPageContainer.innerHTML = '';
+        const studentPageData = studentPagesData[studentId];
+        if (studentPageData) {
+            const studentPageHtml = `
+                <h2>${studentPageData.name}</h2>
+                <p>Email: ${studentPageData.email}</p>
+                <button id="submit-btn">Submit</button>
+                <button id="decline-btn">Decline</button>
+            `;
+            studentPageContainer.innerHTML = studentPageHtml;
+            document.getElementById('submit-btn').addEventListener('click', () => {
+                // Submit logic here
+            });
+            document.getElementById('decline-btn').addEventListener('click', () => {
+                // Decline logic here
+            });
+        }
+    }
+    
+    // Initial render
+    renderNewsList();
+    renderStudentRequestsList();
+    
+    // Student requests list item click handler
+    document.getElementById('student-requests-list').addEventListener('click', (e) => {
+        if (e.target.tagName === 'LI') {
+            const studentId = e.target.dataset.studentId;
+            renderStudentPage(studentId);
+        }
+    });</script>
+</html>
