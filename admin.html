@@ -3,160 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administration</title>
-    <link rel="stylesheet" href="style.css">
+    <title>University Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+        }
+
+        .neumorphic {
+            background: #f0f4f8;
+            box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;
+            border-radius: 15px;
+        }
+
+        .neumorphic-inset {
+            background: #f0f4f8;
+            box-shadow: inset 5px 5px 10px #d1d9e6, inset -5px -5px 10px #ffffff;
+            border-radius: 10px;
+        }
+
+        .btn-neumorphic {
+            background: #f0f4f8;
+            box-shadow: 5px 5px 10px #d1d9e6, -5px -5px 10px #ffffff;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-neumorphic:hover {
+            box-shadow: 2px 2px 5px #d1d9e6, -2px -2px 5px #ffffff;
+        }
+
+        .btn-neumorphic:active {
+            box-shadow: inset 2px 2px 5px #d1d9e6, inset -2px -2px 5px #ffffff;
+        }
+
+        .pagination-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
 </head>
-<style>body {
-    font-family: Arial, sans-serif;
-}
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <h1 class="text-4xl font-bold mb-8 text-center text-gray-800">University Admin Dashboard</h1>
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2em;
-}
-
-section {
-    background-color: #f7f7f7;
-    padding: 1em;
-    margin-bottom: 1em;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#news-section {
-    width: 50%;
-}
-
-#student-requests-section {
-    width: 50%;
-}
-
-#student-page-section {
-    width: 100%;
-}
-
-#news-list, #student-requests-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-#news-list li, #student-requests-list li {
-    padding: 1em;
-    border-bottom: 1px solid #ccc;
-}
-
-#news-list li:last-child, #student-requests-list li:last-child {
-    border-bottom: none;
-}
-
-#student-page-container {
-    padding: 2em;
-}</style>
-
-<body>
-    <header>
-        <h1>University Admin Page</h1>
-    </header>
-    <main>
-        <section id="news-section">
-            <h2>News</h2>
-            <form id="add-news-form">
-                <input type="text" id="news-title" placeholder="News Title">
-                <textarea id="news-content" placeholder="News Content"></textarea>
-                <button id="add-news-btn">Add News</button>
+        <!-- News Upload Section -->
+        <section class="neumorphic p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-gray-700">Add New Article</h2>
+            <form id="newsForm" class="space-y-4">
+                <div>
+                    <label for="newsImage" class="block text-sm font-medium text-gray-700 mb-2">Article Image</label>
+                    <input type="file" id="newsImage" name="newsImage" accept="image/*" class="neumorphic-inset w-full p-2">
+                </div>
+                <div>
+                    <label for="newsTitle" class="block text-sm font-medium text-gray-700 mb-2">Article Title</label>
+                    <input type="text" id="newsTitle" name="newsTitle" class="neumorphic-inset w-full p-2">
+                </div>
+                <div>
+                    <label for="newsContent" class="block text-sm font-medium text-gray-700 mb-2">Article Content</label>
+                    <textarea id="newsContent" name="newsContent" rows="4" class="neumorphic-inset w-full p-2"></textarea>
+                </div>
+                <button type="submit" class="btn-neumorphic px-4 py-2 text-blue-600 font-bold hover:bg-blue-50 transition-colors">Publish Article</button>
             </form>
-            <ul id="news-list"></ul>
         </section>
-        <section id="student-requests-section">
-            <h2>Student Requests</h2>
-            <ul id="student-requests-list"></ul>
-        </section>
-        <section id="student-page-section">
-            <h2>Student Page</h2>
-            <div id="student-page-container"></div>
-        </section>
-    </main>
-    <script src="script.js"></script>
-</body>
 
-<script>const newsData = [];
-    const studentRequestsData = [
-        { id: 1, name: 'John Doe', email: 'john.doe@example.com' },
-        { id: 2, name: 'Jane Doe', email: 'jane.doe@example.com' },
-    ];
-    const studentPagesData = {};
-    
-    // Add news form submission handler
-    document.getElementById('add-news-form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        const newsTitle = document.getElementById('news-title').value;
-        const newsContent = document.getElementById('news-content').value;
-        newsData.push({ title: newsTitle, content: newsContent });
-        renderNewsList();
-    });
-    
-    // Render news list
-    function renderNewsList() {
-        const newsList = document.getElementById('news-list');
-        newsList.innerHTML = '';
-        newsData.forEach((news) => {
-            const newsListItem = document.createElement('li');
-            newsListItem.textContent = ${news.title} - ${news.content};
-            newsList.appendChild(newsListItem);
-        });
-    }
-    
-    // Render student requests list
-    function renderStudentRequestsList() {
-        const studentRequestsList = document.getElementById('student-requests-list');
-        studentRequestsList.innerHTML = '';
-        studentRequestsData.forEach((studentRequest) => {
-            const studentRequestListItem = document.createElement('li');
-            studentRequestListItem.textContent = ${studentRequest.name} - ${studentRequest.email};
-            studentRequestsList.appendChild(studentRequestListItem);
-        });
-    }
-    
-    // Render student page
-    function renderStudentPage(studentId) {
-        const studentPageContainer = document.getElementById('student-page-container');
-        studentPageContainer.innerHTML = '';
-        const studentPageData = studentPagesData[studentId];
-        if (studentPageData) {
-            const studentPageHtml = `
-                <h2>${studentPageData.name}</h2>
-                <p>Email: ${studentPageData.email}</p>
-                <button id="submit-btn">Submit</button>
-                <button id="decline-btn">Decline</button>
-            `;
-            studentPageContainer.innerHTML = studentPageHtml;
-            document.getElementById('submit-btn').addEventListener('click', () => {
-                // Submit logic here
+        <!-- Student Requests Section -->
+        <section class="neumorphic p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-gray-700">Student Requests</h2>
+            <div class="overflow-x-auto custom-scrollbar">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="p-2 text-left">Student Name</th>
+                            <th class="p-2 text-left">Email</th>
+                            <th class="p-2 text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentRequestsBody">
+                        <!-- Student requests will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="flex justify-center mt-4" id="requestsPagination">
+                <!-- Pagination buttons will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- University Students Section -->
+        <section class="neumorphic p-6">
+            <h2 class="text-2xl font-bold mb-4 text-gray-700">University Students</h2>
+            <div class="overflow-x-auto custom-scrollbar">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="p-2 text-left">Student Name</th>
+                            <th class="p-2 text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="universityStudentsBody">
+                        <!-- University students will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Sample data for student requests
+        const studentRequests = [
+            { id: 1, name: "John Doe", email: "john@example.com", details: "Request details 1" },
+            { id: 2, name: "Jane Smith", email: "jane@example.com", details: "Request details 2" },
+            { id: 3, name: "Bob Johnson", email: "bob@example.com", details: "Request details 3" },
+            // Add more sample data as needed
+        ];
+
+        // Sample data for university students
+        const universityStudents = [
+            { id: 1, name: "Alice Brown", details: "Student details 1" },
+            { id: 2, name: "Charlie Davis", details: "Student details 2" },
+            { id: 3, name: "Eva Wilson", details: "Student details 3" },
+            // Add more sample data as needed
+        ];
+
+        // Function to display student requests
+        function displayStudentRequests(page = 1, perPage = 10) {
+            const start = (page - 1) * perPage;
+            const end = start + perPage;
+            const requestsToShow = studentRequests.slice(start, end);
+
+            const requestsBody = document.getElementById('studentRequestsBody');
+            requestsBody.innerHTML = '';
+
+            requestsToShow.forEach(request => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="p-2">${request.name}</td>
+                    <td class="p-2">${request.email}</td>
+                    <td class="p-2">
+                        <button onclick="viewRequest(${request.id})" class="btn-neumorphic px-2 py-1 text-blue-600 mr-2 hover:bg-blue-50 transition-colors">View</button>
+                        <button onclick="acceptRequest(${request.id})" class="btn-neumorphic px-2 py-1 text-green-600 mr-2 hover:bg-green-50 transition-colors">Accept</button>
+                        <button onclick="rejectRequest(${request.id})" class="btn-neumorphic px-2 py-1 text-red-600 hover:bg-red-50 transition-colors">Reject</button>
+                    </td>
+                `;
+                requestsBody.appendChild(row);
             });
-            document.getElementById('decline-btn').addEventListener('click', () => {
-                // Decline logic here
+
+            displayPagination(page, Math.ceil(studentRequests.length / perPage));
+        }
+
+        // Function to display pagination
+        function displayPagination(currentPage, totalPages) {
+            const paginationContainer = document.getElementById('requestsPagination');
+            paginationContainer.innerHTML = '';
+
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.textContent = i;
+                button.classList.add('btn-neumorphic', 'pagination-btn');
+                if (i === currentPage) {
+                    button.classList.add('bg-blue-200');
+                }
+                button.onclick = () => displayStudentRequests(i);
+                paginationContainer.appendChild(button);
+            }
+        }
+
+        // Function to display university students
+        function displayUniversityStudents() {
+            const studentsBody = document.getElementById('universityStudentsBody');
+            studentsBody.innerHTML = '';
+
+            universityStudents.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="p-2">${student.name}</td>
+                    <td class="p-2">
+                        <button onclick="viewStudentDetails(${student.id})" class="btn-neumorphic px-2 py-1 text-blue-600 hover:bg-blue-50 transition-colors">View Details</button>
+                    </td>
+                `;
+                studentsBody.appendChild(row);
             });
         }
-    }
-    
-    // Initial render
-    renderNewsList();
-    renderStudentRequestsList();
-    
-    // Student requests list item click handler
-    document.getElementById('student-requests-list').addEventListener('click', (e) => {
-        if (e.target.tagName === 'LI') {
-            const studentId = e.target.dataset.studentId;
-            renderStudentPage(studentId);
+
+        // Function to handle news form submission
+        document.getElementById('newsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = document.getElementById('newsTitle').value;
+            const content = document.getElementById('newsContent').value;
+            const image = document.getElementById('newsImage').files[0];
+            
+            // Here you would typically send this data to a server
+            console.log('News submitted:', { title, content, image });
+            alert('Article published successfully!');
+            this.reset();
+        });
+
+        // Functions for student request actions
+        function viewRequest(id) {
+            const request = studentRequests.find(r => r.id === id);
+            alert(`Request Details: ${request.details}`);
         }
-    });</script>
+
+        function acceptRequest(id) {
+            alert(`Request ${id} has been accepted`);
+        }
+
+        function rejectRequest(id) {
+            alert(`Request ${id} has been rejected`);
+        }
+
+        // Function to view student details
+        function viewStudentDetails(id) {
+            const student = universityStudents.find(s => s.id === id);
+            alert(`Student Details: ${student.details}`);
+        }
+
+        // Initialize the page
+        displayStudentRequests();
+        displayUniversityStudents();
+    </script>
+</body>
 </html>
