@@ -347,7 +347,7 @@
     <header class="bg-black text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center">
-                <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-12 h-12 rounded-full " >
+                <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-12 h-12 rounded-md mr-8" style="background-color:  #fafafa;">
                 <h1 class="text-2xl font-bold logo-text">Geneva International University</h1>
             </div>
             <nav class="hidden md:block">
@@ -553,72 +553,6 @@
         </div>
        
     </footer>
-    <script>
-        // Image gallery functionality
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const modalDesc = document.getElementById('modalDescription');
-        const closeBtn = document.getElementsByClassName('close')[0];
-
-        galleryItems.forEach(item => {
-            item.addEventListener('click', function() {
-                modal.style.display = "block";
-                modalImg.src = this.querySelector('.gallery-image').src;
-                modalDesc.innerHTML = this.querySelector('.image-description').innerHTML;
-            });
-        });
-
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        // Image slider functionality
-        const sliderImages = document.querySelectorAll('.slider-image');
-        const prevArrow = document.querySelector('.slider-arrow.left');
-        const nextArrow = document.querySelector('.slider-arrow.right');
-        let currentImageIndex = 0;
-
-        function showImage(index) {
-            sliderImages.forEach((img, i) => {
-                img.classList.remove('active');
-                if (i === index) {
-                    img.classList.add('active');
-                }
-            });
-        }
-
-        prevArrow.addEventListener('click', () => {
-            currentImageIndex = (currentImageIndex - 1 + sliderImages.length) % sliderImages.length;
-            showImage(currentImageIndex);
-        });
-
-        nextArrow.addEventListener('click', () => {
-            currentImageIndex = (currentImageIndex + 1) % sliderImages.length;
-            showImage(currentImageIndex);
-        });
-
-        // Auto-slide every 5 seconds
-        setInterval(() => {
-            currentImageIndex = (currentImageIndex + 1) % sliderImages.length;
-            showImage(currentImageIndex);
-        }, 5000);
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+   
 </body>
 </html>

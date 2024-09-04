@@ -3,105 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University Acceptance Page</title>
+    <title>addmission
+        
+    </title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-        :root {
-            --gold: #d4af37;
-            --black: #1a1a1a;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: white;
-            color: var(--black);
-        }
-
-        .gold-text {
-            color: var(--gold);
-        }
-
-        .gold-bg {
-            background-color: var(--gold);
-        }
-
-        .black-bg {
-            background-color: var(--black);
-        }
-
-        .header {
-            background: linear-gradient(to right, var(--black), var(--gold));
-        }
-
-        .rotating-images {
-            width: 300px;
-            height: 300px;
-            position: relative;
-            margin: 0 auto;
-        }
-
-        .rotating-images img {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform-origin: -50px -50px;
-            animation: rotate 10s infinite linear;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
-            to { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
-        }
-
-        .rotating-images img:nth-child(2) { animation-delay: -2s; }
-        .rotating-images img:nth-child(3) { animation-delay: -4s; }
-        .rotating-images img:nth-child(4) { animation-delay: -6s; }
-        .rotating-images img:nth-child(5) { animation-delay: -8s; }
-
-        .transparent-bg {
-            background-color: rgba(212, 175, 55, 0.1);
-        }
-
-        .map-container {
-            height: 300px;
-            background-color: #f0f0f0;
-        }
-
-        input[type="text"], input[type="email"], input[type="tel"], select {
-            background-color: white;
-            border: 1px solid var(--gold);
-            color: var(--black);
-        }
-
-        input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, select:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px var(--gold);
-        }
-
-        .btn-gold {
-            background-color: var(--gold);
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .btn-gold:hover {
-            background-color: #b8960c;
-        }
-
-        .navbar {
-            background-color: var(--black);
-        }
-
-        .footer {
-            background-color: var(--black);
-        }
-    </style>
+ 
 </head>
 <body class="flex flex-col min-h-screen">
     <header class="bg-black text-white p-4">
@@ -145,33 +53,7 @@
             <title>Admissions - Geneva International University Online Program</title>
             <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-            <style>
-                @keyframes float {
-                    0% { transform: translateY(0px); }
-                    50% { transform: translateY(-10px); }
-                    100% { transform: translateY(0px); }
-                }
-                .floating { animation: float 3s ease-in-out infinite; }
-                .gold-text { color: #c49e23; }
-                .bg-gold { background-color: #c49e23; }
-                .custom-shape-divider-bottom-1684154972 {
-                    position: absolute;
-                    bottom: 0;
-                    left: 0;
-                    width: 100%;
-                    overflow: hidden;
-                    line-height: 0;
-                }
-                .custom-shape-divider-bottom-1684154972 svg {
-                    position: relative;
-                    display: block;
-                    width: calc(100% + 1.3px);
-                    height: 150px;
-                }
-                .custom-shape-divider-bottom-1684154972 .shape-fill {
-                    fill: #c1c1c1;
-                }
-            </style>
+            
         </head>
         <body class="bg-gray-100 font-sans">
             <header class=" text-white py-12 relative overflow-hidden" style="background-color: rgb(204, 200, 200);">
@@ -256,21 +138,7 @@
                     </div>
                 </section>
             </main>
-            <script>
-                document.addEventListener('DOMContentLoaded', (event) => {
-                    const sections = document.querySelectorAll('main section');
-                    sections.forEach((section, index) => {
-                        section.style.opacity = '0';
-                        section.style.transform = 'translateY(20px)';
-                        section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                        section.style.transitionDelay = `${index * 0.2}s`;
-                        setTimeout(() => {
-                            section.style.opacity = '1';
-                            section.style.transform = 'translateY(0)';
-                        }, 100 + index * 200);
-                    });
-                });
-            </script>
+            
 <section class="mb-12 relative overflow-hidden">
     <div class="flex items-center justify-center relative">
       <div class="image-grid absolute inset-0 z-0">
@@ -286,63 +154,8 @@
       </div>
     </div>
   </section>
-  
-  <style>
-    .image-grid {
-      transform: rotate(45deg);
-    }
-    .image-grid img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .image-grid img:nth-child(1) {
-      transform: rotate(0deg) translate(100px, 0);
-    }
-    .image-grid img:nth-child(2) {
-      transform: rotate(90deg) translate(100px, 0);
-    }
-    .image-grid img:nth-child(3) {
-      transform: rotate(180deg) translate(100px, 0);
-    }
-    .image-grid img:nth-child(4) {
-      transform: rotate(270deg) translate(100px, 0);
-    }
-    .image-grid img.active {
-      opacity: 1;
-    }
-    .image-grid img:not(.active) {
-      opacity: 0.3;
-    }
-  </style>
-  
-  <script>
-    const images = document.querySelectorAll('.image-grid img');
-    const mainImage = document.getElementById('main-image');
-    let currentImage = 0;
-  
-    function cycleImages() {
-      images[currentImage].classList.remove('active');
-      currentImage = (currentImage + 1) % images.length;
-      images[currentImage].classList.add('active');
-      mainImage.src = images[currentImage].src.replace('400/300', '800/500');
-    }
-  
-    setInterval(cycleImages, 3000); // cycle every 3 seconds
-  </script>
-      <style>
-          .privacy-section {
-              transition: all 0.3s ease-in-out;
-          }
-          .privacy-section:hover {
-              transform: translateY(-5px);
-              box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-          }
-          .gold-text {
-              color: #c49e23;
-          }
-      </style>
+
+ 
       <div class="container mx-auto px-4 py-8">
           <h1 class="text-4xl font-bold mb-8 text-center gold-text">Privacy Policy</h1>
           
@@ -389,22 +202,8 @@
           </div>
       </div>
   
-      <script>
-          document.addEventListener('DOMContentLoaded', (event) => {
-              const sections = document.querySelectorAll('.privacy-section');
-              sections.forEach((section, index) => {
-                  section.style.opacity = '0';
-                  section.style.transform = 'translateY(20px)';
-                  section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                  section.style.transitionDelay = `${index * 0.1}s`;
-                  setTimeout(() => {
-                      section.style.opacity = '1';
-                      section.style.transform = 'translateY(0)';
-                  }, 100 + index * 100);
-              });
-          });
-      </script>
-        <section class="transparent-bg p-8 rounded-lg shadow-lg">
+    
+        <section class="transparent-bg p-8 rounded-lg shadow-lg" style="background-color: #f8f3e2;">
             <div class="text-center mb-8">
                 <div class="university-logo mx-auto">
                     <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" style="width: 200px; height: auto; display: block; margin: 0 auto;">
@@ -460,29 +259,30 @@
                     </div>
                 </div>
 
-                <div class="space-y-4">
-                    <div>
-                        <label for="passportPhoto" class="block mb-2">Passport Photo</label>
-                        <input type="file" id="passportPhoto" name="passportPhoto" accept="image/*" required class="w-full">
+           
+                  <div class="space-y-4">
+                    <div class="file-input-field">
+                      <label for="passportPhoto" class="block mb-2">Passport Photo</label>
+                      <input type="file" id="passportPhoto" name="passportPhoto" accept="image/*" required class="w-full">
                     </div>
-                    <div>
-                        <label for="passportCopy" class="block mb-2">Passport Copy</label>
-                        <input type="file" id="passportCopy" name="passportCopy" accept="image/*,application/pdf" required class="w-full">
+                    <div class="file-input-field">
+                      <label for="passportCopy" class="block mb-2">Passport Copy</label>
+                      <input type="file" id="passportCopy" name="passportCopy" accept="image/*,application/pdf" required class="w-full">
                     </div>
-                    <div>
-                        <label for="academicTranscript" class="block mb-2">Academic Transcript & Certificate</label>
-                        <input type="file" id="academicTranscript" name="academicTranscript" accept="image/*,application/pdf" required class="w-full">
+                    <div class="file-input-field">
+                      <label for="academicTranscript" class="block mb-2">Academic Transcript & Certificate</label>
+                      <input type="file" id="academicTranscript" name="academicTranscript" accept="image/*,application/pdf" required class="w-full">
                     </div>
-                    <div>
-                        <label for="languageProficiency" class="block mb-2">Language Proficiency Certificate</label>
-                        <input type="file" id="languageProficiency" name="languageProficiency" accept="image/*,application/pdf" required class="w-full">
+                    <div class="file-input-field">
+                      <label for="languageProficiency" class="block mb-2">Language Proficiency Certificate</label>
+                      <input type="file" id="languageProficiency" name="languageProficiency" accept="image/*,application/pdf" required class="w-full">
                     </div>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-bold mb-2">Security Policy</h3>
+                  </div>
+                  
+                  <div class="security-policy">
+                    <h3 class="text-lg font-bold mb-2">Security Policy</h3>
                     <p>Please read our security policy carefully. By submitting this application, you agree to our terms and conditions.</p>
-                </div>
+                  </div>
 
                 <button type="submit" class="btn-gold px-6 py-2 rounded font-bold">Submit Application</button>
             </form>
@@ -544,122 +344,12 @@
                 </div>
             </div>
         </div>
-        <style>
-            footer {
-                   background-color: #1a1a1a;
-                   color: #ffffff;
-                   padding: 2rem 0;
-                   margin-top: auto;
-               }
-       
-               .footer-link {
-                   color: #d4af37;
-                   transition: color 0.3s ease;
-               }
-       
-               .footer-link:hover {
-                   color: #ffffff;
-               }
-       
-               .social-icon {
-                   color: #d4af37;
-                   transition: color 0.3s ease, transform 0.3s ease;
-               }
-       
-               .social-icon:hover {
-                   color: #ffffff;
-                   transform: translateY(-3px);
-               }
-       </style>   
+        
     </footer>
  <div class="text-center p-6 bg-black">         
             <a class="footer-link font-semibold" href="#"><span style="color: #ffffff;">© 2023 Copyright:</span>Geneva International University</a>
         </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            document.querySelector('form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                // Here you would typically handle the login process
-                alert('Login functionality would be implemented here.');
-            });
-
-            // Add subtle animation to form inputs
-            const inputs = document.querySelectorAll('input');
-            inputs.forEach(input => {
-                input.addEventListener('focus', function() {
-                    this.style.transform = 'translateY(-5px)';
-                });
-                input.addEventListener('blur', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-        });
-    </script>
-      
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-      <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-      
-        // Page transition effect
-        document.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', function(e) {
-            if (this.hostname === window.location.hostname) {
-              e.preventDefault();
-              document.body.classList.add('fade-out');
-              setTimeout(() => {
-                window.location = this.href;
-              }, 300);
-            }
-          });
-        });
-      
-        // Fade in on page load
-        window.addEventListener('pageshow', function(event) {
-          if (event.persisted) {
-            document.body.classList.remove('fade-out');
-          }
-        });
-      
-        // Smooth scroll animation for footer links
-        document.querySelectorAll('footer a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-              behavior: 'smooth'
-            });
-          });
-        });
-      </script>
-      
-      <style>
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      
-        footer {
-          animation: fadeIn 0.5s ease-out;
-        }
-        .fade-out {
-          opacity: 0;
-          transition: opacity 0.3s ease-out;
-        }
-      </style>
-    <script>
-        // Simple map initialization (replace with actual map implementation)
-        function initMap() {
-            const mapDiv = document.getElementById('map');
-            mapDiv.innerHTML = '<p class="text-center py-20">Map goes here</p>';
-        }
-
-        document.addEventListener('DOMContentLoaded', (event) => {
-            initMap();
-
-            document.querySelector('form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Application submitted successfully!');
-            });
-        });
-    </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+  
 </body>
 </html>
