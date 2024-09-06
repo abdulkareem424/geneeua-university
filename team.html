@@ -3,33 +3,473 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>genua university</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
+    <title>University Faculty Team</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --black: #222;
+            --white: #FFF;
+            --light-gray: #F0F0F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--black);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+        }
+
+        .specialization-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .specialization-btn {
+            background-color: var(--gold);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .specialization-btn:hover, .specialization-btn.active {
+            background-color: var(--black);
+        }
+
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .faculty-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.15), -8px -8px 20px rgba(255, 255, 255, 0.8);
+        }
+
+        .faculty-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 2rem auto;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+            transition: transform 0.5s ease;
+        }
+
+        .faculty-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .faculty-card:hover .faculty-image {
+            transform: scale(1.05);
+        }
+
+        .faculty-card:hover .faculty-image img {
+            transform: scale(1.1);
+        }
+
+        .faculty-info {
+            padding: 1rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .faculty-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .faculty-specialization, .faculty-degree {
+            font-size: 1rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .view-more-btn {
+            background-color: var(--gold);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .view-more-btn:hover {
+            background-color: var(--black);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 800px;
+            position: relative;
+            animation: modalFadeIn 0.5s;
+        }
+
+        @keyframes modalFadeIn {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--gold);
+        }
+
+        .modal-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+            border: 5px solid var(--gold);
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .modal-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .view-courses-btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-courses-btn:hover {
+            background-color: var(--black);
+        }
+    </style>
+    <link rel="script" href="script.js">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <h1>Meet Our Team</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="courses.html">Courses</a></li>
-                <li><a href="admission.html">Admission</a></li>
-                <li><a href="team.html">Our Team</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <section>
-        <h2>Faculty and Staff</h2>
-        <div class="team-list">
-            <div class="team-item" data-info="prof.ME Chancellor of the university with over 20 years of experience in higher education.">
-                <img src="" alt="ME">
-                <p>meeee</p>
+    <header class="bg-black text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img  src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-12 h-12 rounded-md mr-8" style="background-color:  #fafafa;">
+                <h1 class="text-2xl font-bold logo-text">Geneva International University</h1>
             </div>
-            
+            <nav class="hidden md:block">
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="hover:text-primary-color transition">Home</a></li>
+                    <li><a href="about.html" class="hover:text-primary-color transition">Contac</a></li>
+                    <li><a href="courses.html" class="hover:text-primary-color transition">Courses</a></li>
+                    <li><a href="admission.html" class="hover:text-primary-color transition">Admuission</a></li>
+                </ul>
+            </nav>
+        
+            <button class="btn-primary px-4 py-2 rounded-full hover:bg-secondary-color transition" onclick="location.href='login.html'" style="padding: 10px; margin-left:10 ;margin-right: 5px;">Login</button>
+             <div class="md:hidden">
+                <button id="menu-toggle" class="text-2xl">☰</button>
+            </div>
         </div>
-        <div id="team-info" class="info-popup"></div>
-    </section>
+    </header>
+
+    <div id="side-menu" class="side-menu neumorphic p-4">
+        <button id="close-menu" class="text-2xl mb-4">×</button>
+        <ul class="space-y-4">
+            <li><a href="index.html" class="text-lg">Home</a></li>
+            <li><a href="about.html" class="text-lg">about</a></li>
+            <li><a href="courses.html" class="text-lg">Courses</a></li>
+            <li><a href="admission.html" class="text-lg">Admuission</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>Our Esteemed Faculty</h1>
+
+        <div class="specialization-buttons">
+            <button class="specialization-btn active" onclick="filterFaculty('all')">All</button>
+            <button class="specialization-btn" onclick="filterFaculty('Computer Science')">Computer Science</button>
+            <button class="specialization-btn" onclick="filterFaculty('Electrical Engineering')">Electrical Engineering</button>
+            <!-- Add more specialization buttons as needed -->
+        </div>
+
+        <div id="facultyGrid" class="faculty-grid">
+            <!-- Faculty cards will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <div id="facultyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-image">
+                <img id="modalImage" src="" alt="Faculty Member">
+            </div>
+            <div class="modal-info">
+                <h2 id="modalName" class="modal-name"></h2>
+                <p id="modalSpecialization"></p>
+                <p id="modalDegree"></p>
+                <p id="modalBio"></p>
+                <a href="#" id="viewCoursesBtn" class="view-courses-btn" target="_blank">View Courses</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center lg:text-left">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div>
+                    <h6 class="uppercase font-semibold mb-4 flex justify-center lg:justify-start">
+                        Quick Links
+                    </h6>
+                    <p class="mb-4">
+                        <a href="index.html" class="footer-link">Home</a>
+                    </p>
+                    <p class="mb-4">
+                        <a href="admission.html" class="footer-link">Admissions</a>
+                    </p>
+                    <p class="mb-4">
+                        <a href="about.html" class="footer-link">about</a>
+                    </p>
+                    <p>
+                        <a href="courses.html" class="footer-link">Courses</a>
+                    </p>
+                </div>
+                <div>
+                    <h6 class="uppercase font-semibold mb-4 flex justify-center lg:justify-start">
+                        about
+                    </h6>
+                    <p class="flex items-center justify-center lg:justify-start mb-4">
+                        <i class="fas fa-home mr-4 text-gray-400"></i> Geneva, CH 1234, Switzerland
+                    </p>
+                    <p class="flex items-center justify-center lg:justify-start mb-4">
+                        <i class="fas fa-envelope mr-4 text-gray-400"></i> info@giu.edu
+                    </p>
+                    <p class="flex items-center justify-center lg:justify-start mb-4">
+                        <i class="fas fa-phone mr-4 text-gray-400"></i> + 41 234 567 88
+                    </p>
+                </div>
+                <div>
+                    <h6 class="uppercase font-semibold mb-4 flex justify-center lg:justify-start">
+                        Follow Us
+                    </h6>
+                    <div class="flex justify-center lg:justify-start">
+                        <a href="#!" class="mr-6 social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#!" class="mr-6 social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#!" class="mr-6 social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#!" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </footer>
+    <script>
+        let facultyData = [];
+
+        async function fetchFacultyData() {
+            try {
+                const response = await fetch('http://localhost:3000/faculty');
+                facultyData = await response.json();
+                renderFacultyCards(facultyData);
+            } catch (error) {
+                console.error('Error fetching faculty data:', error);
+                // Fallback to sample data if fetch fails
+                facultyData = [
+                    {
+                        id: 1,
+                        name: "John Smith",
+                        specialization: "Artificial Intelligence",
+                        degree: "Ph.D. in Computer Science",
+                        bio: "Dr. John Smith is a renowned expert in Artificial Intelligence with over 15 years of experience in the field. He has published numerous papers on machine learning and neural networks. His current research focuses on developing AI systems that can understand and generate human-like language, with applications in natural language processing and conversational AI. Dr. Smith has received several awards for his contributions to the field, including the prestigious AI Innovator Award in 2020. He is passionate about mentoring the next generation of AI researchers and frequently collaborates with industry partners to bridge the gap between academic research and real-world applications.",
+                        image: "https://picsum.photos/200/200?random=1",
+                        department: "Computer Science",
+                        coursesLink: "courses.html?id=1"
+                    },
+                    {
+                        id: 2,
+                        name: "Emily Johnson",
+                        specialization: "Cybersecurity",
+                        degree: "Ph.D. in Information Security",
+                        bio: "Dr. Emily Johnson is a cybersecurity expert with a focus on network security and cryptography. She has worked with several Fortune 500 companies to enhance their security protocols. Dr. Johnson's research spans various areas of cybersecurity, including threat detection, secure communication protocols, and privacy-preserving technologies. She is particularly interested in the intersection of cybersecurity and emerging technologies such as IoT and blockchain. Dr. Johnson has been instrumental in developing new encryption methods that are resistant to quantum computing attacks. She regularly speaks at international conferences and has authored a best-selling book on personal digital security for the general public.",
+                        image: "https://picsum.photos/200/200?random=2",
+                        department: "Computer Science",
+                        coursesLink: "courses.html?id=2"
+                    },
+                    {
+                        id: 3,
+                        name: "Michael Chen",
+                        specialization: "Power Systems",
+                        degree: "Ph.D. in Electrical Engineering",
+                        bio: "Dr. Michael Chen is a leading researcher in power systems and smart grids. His work focuses on improving energy efficiency and integrating renewable energy sources into existing power networks. Dr. Chen has pioneered innovative approaches to grid stability and resilience, particularly in the face of increasing renewable energy penetration. His research team has developed advanced algorithms for real-time power flow optimization and predictive maintenance of grid infrastructure. Dr. Chen is also deeply involved in policy discussions around energy transition and has advised several governments on their renewable energy strategies. He is a strong advocate for interdisciplinary collaboration and often works with computer scientists to apply machine learning techniques to power system challenges.",
+                        image: "https://picsum.photos/200/200?random=3",
+                        department: "Electrical Engineering",
+                        coursesLink: "courses.html?id=3"
+                    },
+                    {
+                        id: 4,
+                        name: "Sarah Patel",
+                        specialization: "Microelectronics",
+                        degree: "Ph.D. in Electrical Engineering",
+                        bio: "Dr. Sarah Patel specializes in microelectronics and semiconductor devices. Her research has contributed to advancements in miniaturization of electronic components and improved energy efficiency in mobile devices. Dr. Patel's work spans from theoretical physics of nanoscale devices to practical applications in consumer electronics. She has made significant contributions to the development of next-generation transistor technologies, including work on 2D materials and quantum dot devices. Dr. Patel holds several patents and has successfully transitioned some of her research into commercial products through collaborations with industry partners. She is passionate about encouraging women in STEM and runs a mentorship program for young female engineers. Her recent projects include developing ultra-low-power sensors for IoT applications and exploring novel materials for flexible electronics.",
+                        image: "https://picsum.photos/200/200?random=4",
+                        department: "Electrical Engineering",
+                        coursesLink: "courses.html?id=4"
+                    }
+                ];
+                renderFacultyCards(facultyData);
+            }
+        }
+
+        function renderFacultyCards(faculty) {
+            const facultyGrid = document.getElementById('facultyGrid');
+            facultyGrid.innerHTML = '';
+
+            faculty.forEach(member => {
+                const card = document.createElement('div');
+                card.className = 'faculty-card';
+                card.innerHTML = `
+                    <div class="faculty-image">
+                        <img src="${member.image}" alt="${member.name}">
+                    </div>
+                    <div class="faculty-info">
+                        <div class="faculty-name">Dr. ${member.name}</div>
+                        <div class="faculty-specialization">${member.specialization}</div>
+                        <div class="faculty-degree">${member.degree}</div>
+                        <button class="view-more-btn" onclick="showModal(${member.id})">View More</button>
+                    </div>
+                `;
+                facultyGrid.appendChild(card);
+            });
+        }
+
+        function filterFaculty(department) {
+            const buttons = document.querySelectorAll('.specialization-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const filteredFaculty = department === 'all' 
+                ? facultyData 
+                : facultyData.filter(member => member.department === department);
+            renderFacultyCards(filteredFaculty);
+        }
+
+        function showModal(id) {
+            const member = facultyData.find(m => m.id === id);
+            const modal = document.getElementById('facultyModal');
+            document.getElementById('modalName').textContent = 'Dr. ' + member.name;
+            document.getElementById('modalSpecialization').textContent = 'Specialization: ' + member.specialization;
+            document.getElementById('modalDegree').textContent = 'Degree: ' + member.degree;
+            document.getElementById('modalBio').textContent = member.bio;
+            document.getElementById('modalImage').src = member.image;
+            document.getElementById('viewCoursesBtn').href = member.coursesLink;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('facultyModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('facultyModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Initial load
+        fetchFacultyData();
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
