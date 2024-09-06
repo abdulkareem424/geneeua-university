@@ -10,38 +10,27 @@
 <body class="min-h-screen flex flex-col">
     <header class="bg-black text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center " >
+            <div class="flex items-center">
                 <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-12 h-12 rounded-md mr-8" style="background-color:  #fafafa;">
                 <h1 class="text-2xl font-bold logo-text">Geneva International University</h1>
             </div>
             <nav class="hidden md:block">
                 <ul class="flex space-x-4">
                     <li><a href="index.html" class="hover:text-primary-color transition">Home</a></li>
-                    <li><a href="contact.html" class="hover:text-primary-color transition">Contac</a></li>
+                    <li><a href="about.html" class="hover:text-primary-color transition">Contac</a></li>
                     <li><a href="courses.html" class="hover:text-primary-color transition">Courses</a></li>
                     <li><a href="admission.html" class="hover:text-primary-color transition">Admuission</a></li>
                 </ul>
             </nav>
-           
-            <button class="btn-primary px-4 py-2 rounded-full hover:bg-secondary-color transition" onclick="location.href='login.html'">Login</button>
-             <div class="md:hidden">
+        
+            <button class="btn-primary px-4 py-2 rounded-full hover:bg-secondary-color transition" onclick="location.href='login.html'" style="padding: 10px; margin-left:10 ;margin-right: 5px;">Login</button>
+            <div class="md:hidden">
                 <button id="menu-toggle" class="text-2xl">☰</button>
             </div>
         </div>
     </header>
-
-    <div id="side-menu" class="side-menu neumorphic p-4">
-        <button id="close-menu" class="text-2xl mb-4">×</button>
-        <ul class="space-y-4">
-            <li><a href="index.html" class="text-lg">Home</a></li>
-            <li><a href="contact.html" class="text-lg">Contact</a></li>
-            <li><a href="courses.html" class="text-lg">Courses</a></li>
-            <li><a href="admission.html" class="text-lg">Admuission</a></li>
-        </ul>
-    </div>
-    <script src="script.js"></script>
     <header class="bg-black text-white p-4 flex justify-between items-center">
-        <h1 class="text-xl">Geneva International University</h1>
+        <h1 class="text-xl">select your speciality</h1>
         <div class="relative">
             <select id="specialtySelect" class="p-2 bg-white text-black rounded custom-select">
                 <option value="">Select Specialty</option>
@@ -49,6 +38,7 @@
                 <option value="education">Education</option>
                 <option value="special_education">Special Education</option>
                 <option value="business_admin">Business Administration</option>
+                <option value="freshman_program">Freshman Program</option>
             </select>
         </div>
     </header>
@@ -60,7 +50,8 @@
 
         <section id="specialtyContent" class="mb-12">
             <div class="hero mb-12 relative overflow-hidden rounded-lg h-[800px]" id="specialtyHero" style="background-size: cover; background-repeat: no-repeat;">
-                <!-- Hero image and description will be updated dynamically -->
+                <img src="images/img5.png" alt="book">
+        
             </div>
 
             <section id="coursesSection">
@@ -70,62 +61,98 @@
     </main>
 
     <footer class="text-center lg:text-left">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid lg:grid-cols-3 gap-8">
-                <div>
-                    <h6 class="uppercase font-semibold mb-4 flex justify-center lg:justify-start">
-                        Quick Links
-                    </h6>
-                    <p class="mb-4">
-                        <a href="index.html" class="footer-link">Home</a>
-                    </p>
-                    <p class="mb-4">
-                        <a href="admission.html" class="footer-link">Admissions</a>
-                    </p>
-                    <p class="mb-4">
-                        <a href="contact.html" class="footer-link">Contact</a>
-                    </p>
-                    <p>
-                        <a href="courses.html" class="footer-link">Courses</a>
-                    </p>
-                </div>
-                <div>
-                    <h6 class="uppercase font-semibold mb-4 flex justify-center lg:justify-start">
-                        Contact
-                    </h6>
-                    <p class="flex items-center justify-center lg:justify-start mb-4">
-                        <i class="fas fa-home mr-4 text-gray-400"></i> Geneva, CH 1234, Switzerland
-                    </p>
-                    <p class="flex items-center justify-center lg:justify-start mb-4">
-                        <i class="fas fa-envelope mr-4 text-gray-400"></i> info@giu.edu
-                    </p>
-                    <p class="flex items-center justify-center lg:justify-start mb-4">
-                        <i class="fas fa-phone mr-4 text-gray-400"></i> + 41 234 567 88
-                    </p>
-                </div>
-                <div>
-                    <h6 class="uppercase font-semibold mb-4 flex justify-center lg:justify-start">
-                        Follow Us
-                    </h6>
-                    <div class="flex justify-center lg:justify-start">
-                        <a href="#!" class="mr-6 social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#!" class="mr-6 social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#!" class="mr-6 social-icon">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#!" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+        <!-- footer content here -->
     </footer>
-    
+
+    <script>
+        const specialties = {
+            psychology: {
+                description: "Explore the human mind and behavior with our programs in Psychology.",
+                image: "images/psychology.jpg",
+                courses: [
+                    { title: "Bachelor's in Psychology", description: "Explore the human mind and behavior with our Bachelor's program in Psychology." },
+                    { title: "Diploma in Psychology", description: "Gain foundational knowledge with our Diploma program in Psychology." },
+                    { title: "Master's in Psychology", description: "Delve deeper into the field of psychology with our Master's program." },
+                    { title: "Ph.D. in Psychology", description: "Pursue advanced research with our Ph.D. program in Psychology." }
+                ]
+            },
+            education: {
+                description: "Learn the art of teaching and education with our programs in Education.",
+                image: "images/education.jpg",
+                courses: [
+                    { title: "Bachelor's in Education", description: "Learn the art of teaching with our Bachelor's program in Education." },
+                    { title: "Diploma in Education", description: "Develop foundational skills in education with our Diploma program." },
+                    { title: "Master's in Education", description: "Advance your teaching career with our Master's program in Education." },
+                    { title: "Ph.D. in Education", description: "Engage in research and contribute to the field with our Ph.D. program in Education." }
+                ]
+            },
+            special_education: {
+                description: "Learn to support students with special needs with our programs in Special Education.",
+                image: "images/special_education.jpg",
+                courses: [
+                    { title: "Bachelor's in Special Education", description: "Learn to support students with special needs with our Bachelor's program in Special Education." },
+                    { title: "Diploma in Special Education", description: "Acquire foundational skills in special education with our Diploma program." },
+                    { title: "Master's in Special Education", description: "Advance your career in special education with our Master's program." },
+                    { title: "Ph.D. in Special Education", description: "Pursue advanced research in special education with our Ph.D. program." }
+                ]
+            },
+            business_admin: {
+                description: "Learn the skills to succeed in business with our programs in Business Administration.",
+                image: "images/business_admin.jpg",
+                courses: [
+                    { title: "Bachelor's in Business Administration", description: "Learn the skills to succeed in business with our Bachelor's program in Business Administration." },
+                    { title: "Diploma in Business Administration", description: "Build foundational business skills with our Diploma program." },
+                    { title: "Master's in Business Administration", description: "Enhance your business acumen with our Master's program in Business Administration." },
+                    { title: "Ph.D. in Business Administration", description: "Conduct advanced research in business with our Ph.D. program." }
+                ]
+            },
+            freshman_program: {
+                description: "Designed specifically for students with learning difficulties, our freshman program provides a supportive environment to help you succeed.",
+                image: "images/freshman_program.jpg",
+                courses: [
+                    { title: "Freshman Program for Students with Learning Difficulties", description: "Our freshman program offers a supportive environment tailored for students with learning difficulties." },
+                {title:"diploma in buisness adminstration"},
+                {title:"diploma in buisness adminstration"},
+                {title:"diploma in buisness adminstration"},
+                {title:"diploma in buisness adminstration"},
+                ]
+            }
+        };
+
+        document.getElementById('specialtySelect').addEventListener('change', function() {
+            const specialty = this.value;
+            const heroDiv = document.getElementById('specialtyHero');
+            const coursesSection = document.getElementById('coursesSection');
+
+            if (specialty && specialties[specialty]) {
+                const selectedSpecialty = specialties[specialty];
+
+                // Update hero section
+                heroDiv.style.backgroundImage = `url(${selectedSpecialty.image})`;
+                heroDiv.innerHTML = `<div class="p-8 bg-black bg-opacity-50 rounded-lg absolute bottom-0 left-0">
+                                        <h2 class="text-4xl text-white font-bold mb-4">${this.options[this.selectedIndex].text}</h2>
+                                        <p class="text-white text-lg">${selectedSpecialty.description}</p>
+                                    </div>`;
+
+                // Update courses section
+                let coursesHtml = '<h2 class="text-3xl font-bold mb-6">Courses</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">';
+                selectedSpecialty.courses.forEach(course => {
+                    coursesHtml += `<div class="course-card neumorphic p-4">
+                                        <img src="https://picsum.photos/200/150" alt="Course Image" class="w-full h-48 object-cover rounded-lg mb-4">
+                                        <h3 class="text-xl font-semibold mb-2">${course.title}</h3>
+                                        <p>${course.description}</p>
+                                        <button class="download-btn">Download Full Course Description</button>
+                                    </div>`;
+                });
+                coursesHtml += '</div>';
+                coursesSection.innerHTML = coursesHtml;
+            } else {
+                // Clear the content if no specialty is selected
+                heroDiv.style.backgroundImage = 'none';
+                heroDiv.innerHTML = '';
+                coursesSection.innerHTML = '';
+            }
+        });
+    </script>
 </body>
 </html>
