@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (isset($_SESSION['user_id'])) {	echo '<script type="text/javascript">window.location.href = "already_logged.php";</script>';
+    exit();
+}
+$isLoggedIn = isset($_SESSION['user_id']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,32 +13,180 @@
     <title>addmission
         
     </title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    const countries = [
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda",
+    "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas",
+    "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize",
+    "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana",
+    "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde",
+    "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile",
+    "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica",
+    "Croatia", "Cuba", "Cyprus", "Czechia (Czech Republic)", "Democratic Republic of the Congo",
+    "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt",
+    "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini (Swaziland)",
+    "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia",
+    "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau",
+    "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia",
+    "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan",
+    "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia",
+    "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+    "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands",
+    "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia",
+    "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru",
+    "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea",
+    "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine State", "Panama",
+    "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar",
+    "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia",
+    "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe",
+    "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore",
+    "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea",
+    "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland",
+    "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga",
+    "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda",
+    "Ukraine", "United Arab Emirates", "United Kingdom", "United States of America", "Uruguay",
+    "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+];
+
+
+    $(document).ready(function() {
+        const select = $('#country-select');
+        countries.forEach(country => {
+            select.append(new Option(country, country));
+        });
+
+        select.select2({
+            placeholder: "Select a country",
+            allowClear: true
+        });
+    });
+</script>
+
+
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <style> .file-input { display: inline-block; background-color: #d4af37; color: white; padding: 10px 20px; border: 2px solid #d4af37; border-radius: 4px; /* Makes the button rectangular */ cursor: pointer; text-align: center;
-     width: auto; /* Adjust this width to fit your button size */ height: 40px; line-height: 20px; font-size: 14px; overflow: hidden; position: relative; } 
-    .file-input::before { content: 'Choose File'; /* Text inside the button */ display: inline-block; background-color: transparent; color: white; border: none; border-radius: 4px; padding: 10px 20px; cursor: pointer; text-align: center; width: auto;
-    height: 40px; line-height: 20px; font-size: 14px; position: absolute; top: 0; left: 0; z-index: 1; } 
-    .file-input input[type="file"] { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; } </style></head>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --black: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(234, 223, 200);
+            color: var(--black);
+        }
+
+        .gold-text {
+            color: var(--gold);
+        }
+
+        .gold-bg {
+            background-color: var(--gold);
+        }
+
+        .black-bg {
+            background-color: var(--black);
+        }
+
+        .header {
+            background: linear-gradient(to right, var(--black), var(--gold));
+        }
+
+        .rotating-images {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .rotating-images img {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform-origin: -50px -50px;
+            animation: rotate 10s infinite linear;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+        }
+
+        .rotating-images img:nth-child(2) { animation-delay: -2s; }
+        .rotating-images img:nth-child(3) { animation-delay: -4s; }
+        .rotating-images img:nth-child(4) { animation-delay: -6s; }
+        .rotating-images img:nth-child(5) { animation-delay: -8s; }
+
+        .transparent-bg {
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+
+        .map-container {
+            height: 300px;
+            background-color: #f0f0f0;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"], select {
+            background-color: rgb(252, 252, 252);
+            border: 1px solid var(--gold);
+            color: var(--black);
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="tel"]:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            background-color: #b8960c;
+        }
+
+        .navbar {
+            background-color: var(--black);
+        }
+
+        .footer {
+            background-color: var(--black);
+        }
+    </style>
+</head>
 <body class="flex flex-col min-h-screen">
-    <header class="bg-black text-white p-4">
+<header class="bg-black text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center " >
-                <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-12 h-12 rounded-md mr-8" style="background-color:  #fafafa;">
+            <div class="flex items-center">
+                <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-12 h-12 rounded mr-4" style="background-color: #fafafa;">
                 <h1 class="text-2xl font-bold logo-text">Geneva International University</h1>
             </div>
             <nav class="hidden md:block">
                 <ul class="flex space-x-4">
-                    <li><a href="index.html" class="hover:text-primary-color transition">Home</a></li>
-                    <li><a href="contact.html" class="hover:text-primary-color transition">Contac</a></li>
-                    <li><a href="courses.html" class="hover:text-primary-color transition">Courses</a></li>
-                    <li><a href="admission.html" class="hover:text-primary-color transition">Admuission</a></li>
+                    <li><a href="index.php" class="hover:text-primary-color transition">Home</a></li>
+                    <li><a href="contact.php" class="hover:text-primary-color transition">Contact</a></li>
+                    <li><a href="courses.php" class="hover:text-primary-color transition">Courses</a></li>
+                    <li><a href="admission.php" class="hover:text-primary-color transition">Admission</a></li>
                 </ul>
             </nav>
-           
-            <button class="btn-primary px-4 py-2 rounded-full hover:bg-secondary-color transition" onclick="location.href='login.html'">Login</button>
-             <div class="md:hidden">
+            <button class="btn-primary px-4 py-2 rounded-full hover:bg-secondary-color transition" onclick="location.href='<?php echo $isLoggedIn ? 'logout.php' : 'login.php'; ?>'">
+                <?php echo $isLoggedIn ? 'Logout' : 'Login'; ?>
+            login</button>
+            <div class="md:hidden">
                 <button id="menu-toggle" class="text-2xl">☰</button>
             </div>
         </div>
@@ -51,7 +206,7 @@
         <!DOCTYPE html>
         <html lang="en">
         <head>
-
+            <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Admissions - Geneva International University Online Program</title>
             <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -82,63 +237,15 @@
                 .custom-shape-divider-bottom-1684154972 .shape-fill {
                     fill: #c1c1c1;
                 }
-                /* CSS to style the file input button */
-input[type="file"].file-input {
-  display: inline-block;
-  background-color: #c49e23;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 50%; /* Makes the button circular */
-  cursor: pointer;
-  text-align: center;
-  width: 50px; /* Adjust this width to fit your button size */
-  height: 50px;
-  line-height: 30px;
-  font-size: 14px;
-  overflow: hidden;
-}
-
-input[type="file"].file-input::-webkit-file-upload-button {
-  visibility: hidden;
-}
-
-input[type="file"].file-input::before {
-  content: 'Choose File'; /* Text inside the button */
-display: inline-block;
-background-color: #c49e23;
-color: white;
-border: none;
-border-radius: 50%;
-padding: 10px;
-cursor: pointer;
-text-align: center;
-width: 50px;
-height: 50px;
-line-height: 30px;
-font-size: 14px;
-}
-
-input[type="file"].file-input:hover::before {
-background-color: darken(#c49e23, 10%);
-}
-
-input[type="file"].file-input:active::before {
-background-color: lighten(#c49e23, 10%);
-}
-
             </style>
         </head>
         <body class="bg-gray-100 font-sans">
-            <header class="bg-gold text-white py-12 relative overflow-hidden">
-                <div class="container mx-auto px-4 relative z-10">
+            <header class=" text-white py-12 rounded-half relative overflow-hidden" style="background-color:#c4a437" >
+                <div class="container mx-auto px-4 relative z-10" >
                     <h1 class="text-5xl font-bold mb-4">Admissions</h1>
                     <p class="text-2xl">Geneva International University Online Program</p>
                 </div>
-                <div class="custom-shape-divider-bottom-1684154972">
-                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    </svg>
-                </div>
+                
             </header>
         
             <main class="container mx-auto px-4 py-8">
@@ -284,7 +391,7 @@ background-color: lighten(#c49e23, 10%);
       mainImage.src = images[currentImage].src.replace('400/300', '800/500');
     }
   
-    setInterval(cycleImages, 3000); // cycle every 3 seconds
+    setInterval(cycleImages, 3000);
   </script>
       <style>
           .privacy-section {
@@ -360,9 +467,9 @@ background-color: lighten(#c49e23, 10%);
           });
       </script>
         <section class="transparent-bg p-8 rounded-lg shadow-lg" style="background-color: #f8f3e2;">
-            <div class="text-center mb-8">
-                <div class="university-logo mx-auto">
-                    <img alt="logo" src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" style="width: 200px; height: auto; display: block; margin: 0 auto;">
+            <div class="text-center mb-8" >
+                <div class="university-logo" style="background-color:  #fafafa; ">
+                    <img alt="logo" src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" style=" width: 200px; height: auto; display: block; margin: 0 auto;">
                 </div>
                 <h2 class="text-2xl font-bold mt-4">Geneva International University</h2>
             </div>
@@ -371,15 +478,16 @@ background-color: lighten(#c49e23, 10%);
             <p class="text-center mb-6">Welcome to the application process. We're excited to have you join our academic community!</p>
             <p class="text-center mb-8 font-bold">Please read all conditions carefully before submitting your application.</p>
 
-            <form class="space-y-6">
+            <form class="space-y-6" action="admissionresult.php" method="POST" enctype="multipart/form-data">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
                     <div>
-                        <label for="firstName" class="block mb-">First Name</label>
-                        <input type="text" id="firstName" name="firstName" required class="w-full px-3 py-2 rounded">
+                        <label for="first_name" class="block mb-2">First Name</label>
+                        <input type="text" id="first_name" name="first_name" required class="w-full px-3 py-2 rounded">
                     </div>
                     <div>
-                        <label for="lastName" class="block mb-2">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" required class="w-full px-3 py-2 rounded">
+                        <label for="last_name" class="block mb-2">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" required class="w-full px-3 py-2 rounded">
                     </div>
                     <div>
                         <label for="email" class="block mb-2">Email</label>
@@ -390,57 +498,11 @@ background-color: lighten(#c49e23, 10%);
                         <input type="email" id="confirmEmail" name="confirmEmail" required class="w-full px-3 py-2 rounded">
                     </div>
                     <div class="md:col-span-2">
-                        <div>
-                            <label for="location" class="block mb-2">Location</label>
-                            
-                            <select id="country-select" class="select2-selection__rendered" style="width: 100%, height :auto" aria-readonly="true">
-                            </select>
-                        </div>
-                        
-                        <script>
-                            const countries = [
-                                "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", 
-                                "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", 
-                                "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", 
-                                "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", 
-                                "Chile", "China", "Colombia", "Comoros", "Congo (Congo-Brazzaville)", "Costa Rica", "Croatia", "Cuba", 
-                                "Cyprus", "Czechia (Czech Republic)", "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", 
-                                "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", 
-                                "Eswatini (Swaziland)", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", 
-                                "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", 
-                                "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", 
-                                "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", 
-                                "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", 
-                                "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", 
-                                "Montenegro", "Morocco", "Mozambique", "Myanmar (formerly Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", 
-                                "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan", 
-                                "Palau", "Palestine State", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", 
-                                "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", 
-                                "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", 
-                                "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", 
-                                "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", 
-                                "Syria", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", 
-                                "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", 
-                                "United States of America", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", 
-                                "Yemen", "Zambia", "Zimbabwe"
-                            ];
-                        
-                            $(document).ready(function() {
-                                const select = $('#country-select');
-                                
-                                // Append countries to select options
-                                countries.forEach(country => {
-                                    select.append(new Option(country, country));
-                                });
-                        
-                                // Initialize Select2 on the dropdown
-                                select.select2({
-                                    placeholder: "Select a country",
-                                    allowClear: true
-                                });
-                            });
-                        </script>
-                        
+    <label for="location" class="block mb-2">Country</label>
+    <select id="country-select" name="location" required class="w-full px-3 py-2 rounded">
+    </select>
+</div>
+
                     <div>
                         <label for="phone" class="block mb-2">Phone Number</label>
                         <input type="tel" id="phone" name="phone" required class="w-full px-3 py-2 rounded">
@@ -450,8 +512,8 @@ background-color: lighten(#c49e23, 10%);
                         <input type="tel" id="altPhone" name="altPhone" class="w-full px-3 py-2 rounded">
                     </div>
                     <div>
-                        <label for="education" class="block mb-2">Highest Education Level</label>
-                        <select id="education" name="education" required class="w-full px-3 py-2 rounded">
+                        <label for="highest_education_level" class="block mb-2">Highest Education Level</label>
+                        <select id="highest_education_level" name="highest_education_level" required class="w-full px-3 py-2 rounded">
                             <option value="">Select</option>
                             <option value="highschool">High School</option>
                             <option value="Associate ">Associate Degree </option>
@@ -463,33 +525,157 @@ background-color: lighten(#c49e23, 10%);
                     </div>
                 </div>
 
-                <div class="space-y-4">
-                    <div>
-                        <label for="passport" class="block mb-2">Passport </label>
-                        <input type="file" id="passport" name="passport" accept="image/*,application/pdf" required class="w-full">
-                    </div>
-        
-                    <div>
-                        <label for="passportCopy" class="block mb-2">Passport Copy</label>
-                        <input type="file" id="passportCopy" name="passportCopy" accept="image/*,application/pdf" required class="w-full">
-                    </div>
-                    <div>
-                        <label for="academicTranscript" class="block mb-2">Academic Transcript & Certificate</label>
-                        <input type="file" id="academicTranscript" name="academicTranscript" accept="image/*,application/pdf" required class="w-full">
-                    </div>
-                    <div>
-                        <label for="languageProficiency" class="block mb-2">Language Proficiency Certificate</label>
-                        <input type="file" id="languageProficiency" name="languageProficiency" accept="image/*,application/pdf" required class="w-full">
-                    </div>
-                </div>
+           <style>
+  /* File input fields */
+  .file-input-field {
+    @apply mb-4;
+  }
+  .file-input-field label {
+    @apply block mb-2 text-lg font-bold text-gray-800;
+  }
+  .file-input-field input[type="file"] {
+    @apply w-full p-2 pl-10 text-sm text-gray-800 border border-yellow-400 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-200 focus:border-yellow-200;
+  }
 
-                <div>
-                    <h3 class="text-xl font-bold mb-2">Security Policy</h3>
-                    <p>Please read our security policy carefully. By submitting this application, you agree to our terms and conditions.</p>
-                </div>
+  /* Security policy section */
+  .security-policy {
+    @apply mt-8 p-4 bg-yellow-400 rounded-md shadow-md;
+  }
+  .security-policy h3 {
+    @apply text-lg font-bold text-gray-800;
+  }
+  .security-policy p {
+    @apply text-sm text-gray-800;
+  }
+</style>
+
+<style>
+    .custom-file-input {
+        display: none;
+    }
+
+    .custom-file-label {
+        display: inline-block;
+        background-color: #D4AF37;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    .custom-file-label:hover {
+        background-color: #b3942c;
+    }
+
+    .file-name {
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 14px;
+        color: #555;
+    }
+</style>
+<div class="space-y-4">
+    <!-- Existing Dropdown for "What do you want to study?" -->
+    <div class="file-input-field">
+        <label for="study_program" style="font-size: 16px; color: #000000; margin-bottom: 8px; display: block;">What do you want to study?</label>
+        <select id="study_program" name="study_program" class="custom-select">
+            <option value="">Select a program</option>
+            <option value="bachelor">Bachelor Program</option>
+            <option value="master">Master Program</option>
+            <option value="phd">PhD Program</option>
+            <option value="diploma">Diploma</option>
+            <option value="freshman">freshman</option>
+        </select>
+    </div>
+
+    <!-- File inputs -->
+    <div class="file-input-field">
+        <label for="passport_photo" style="font-size: 16px; color: #D4AF37; margin-bottom: 8px; display: block;">Passport Photo</label>
+        <label class="custom-file-label" for="passport_photo">Choose Passport Photo</label>
+        <input type="file" id="passport_photo" name="passport_photo" accept="image/*" required class="custom-file-input">
+        <span id="passport_photo_filename" class="file-name"></span>
+    </div>
+
+    <div class="file-input-field">
+        <label for="passport_copy" style="font-size: 16px; color: #D4AF37; margin-bottom: 8px; display: block;">Passport Copy</label>
+        <label class="custom-file-label" for="passport_copy">Choose Passport Copy</label>
+        <input type="file" id="passport_copy" name="passport_copy" accept="image/*,application/pdf" required class="custom-file-input">
+        <span id="passport_copy_filename" class="file-name"></span>
+    </div>
+
+    <div class="file-input-field">
+        <label for="academic_transcript" style="font-size: 16px; color: #D4AF37; margin-bottom: 8px; display: block;">Academic Transcript & Certificate</label>
+        <label class="custom-file-label" for="academic_transcript">Choose Transcript & Certificate</label>
+        <input type="file" id="academic_transcript" name="academic_transcript" accept="image/*,application/pdf" required class="custom-file-input">
+        <span id="academic_transcript_filename" class="file-name"></span>
+    </div>
+
+    <!-- CV input field for Master and PhD only -->
+    <div class="file-input-field" id="cv_section" style="display: none;">
+        <label for="cv" style="font-size: 16px; color: #D4AF37; margin-bottom: 8px; display: block;">CV (only for Master and PhD)</label>
+        <label class="custom-file-label" for="cv">Choose CV File (.pdf only)</label>
+        <input type="file" id="cv" name="cv" accept="application/pdf" class="custom-file-input">
+        <span id="cv_filename" class="file-name"></span>
+    </div>
+</div>
+
+<script>
+    // Function to show/hide CV input based on selected study program
+    const studyProgramSelect = document.getElementById('study_program');
+    const cvSection = document.getElementById('cv_section');
+
+    studyProgramSelect.addEventListener('change', function() {
+        if (this.value === 'master' || this.value === 'phd') {
+            cvSection.style.display = 'block'; // Show CV section for Master and PhD
+        } else {
+            cvSection.style.display = 'none'; // Hide CV section for other programs
+        }
+    });
+
+    // Function to update label with file name
+    function updateFileName(inputId, labelId) {
+        const input = document.getElementById(inputId);
+        const label = document.getElementById(labelId);
+        input.addEventListener('change', function() {
+            const fileName = input.files.length > 0 ? input.files[0].name : '';
+            label.textContent = fileName;
+        });
+    }
+
+    // Initialize file name updates for each input
+    updateFileName('passport_photo', 'passport_photo_filename');
+    updateFileName('passport_copy', 'passport_copy_filename');
+    updateFileName('academic_transcript', 'academic_transcript_filename');
+    updateFileName('cv', 'cv_filename');
+</script>
+
+<script>
+    // Function to update label with file name
+    function updateFileName(inputId, labelId) {
+        const input = document.getElementById(inputId);
+        const label = document.getElementById(labelId);
+        input.addEventListener('change', function() {
+            const fileName = input.files.length > 0 ? input.files[0].name : '';
+            label.textContent = fileName;
+        });
+    }
+
+    // Initialize file inputs
+    updateFileName('passport_photo', 'passport_photo_filename');
+    updateFileName('passport_copy', 'passport_copy_filename');
+    updateFileName('academic_transcript', 'academic_transcript_filename');
+    updateFileName('language_certificate', 'language_certificate_filename');
+</script>
+
+
+<div class="security-policy">
+  <h3 class="text-lg font-bold mb-2">Security Policy</h3>
+  <p>Please read our security policy carefully. By submitting this application, you agree to our terms and conditions.</p>
+</div>
 
                 <button type="submit" class="btn-gold px-6 py-2 rounded font-bold">Submit Application</button>
             </form>
+            
         </section>
     </main>
 
@@ -579,26 +765,6 @@ background-color: lighten(#c49e23, 10%);
  <div class="text-center p-6 bg-black">         
             <a class="footer-link font-semibold" href="#"><span style="color: #ffffff;">© 2023 Copyright:</span>Geneva International University</a>
         </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            document.querySelector('form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                // Here you would typically handle the login process
-                alert('Login functionality would be implemented here.');
-            });
-
-            // Add subtle animation to form inputs
-            const inputs = document.querySelectorAll('input');
-            inputs.forEach(input => {
-                input.addEventListener('focus', function() {
-                    this.style.transform = 'translateY(-5px)';
-                });
-                input.addEventListener('blur', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-        });
-    </script>
       
       <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
       <script>
@@ -645,18 +811,9 @@ background-color: lighten(#c49e23, 10%);
           animation: fadeIn 0.5s ease-out;
         }
         .fade-out {
-        opacity: 0;
-        transition: opacity 0.3s ease-out;
+          opacity: 0;
+          transition: opacity 0.3s ease-out;
         }
-    </style>
-    <script>
-    
-
-            document.querySelector('form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Application submitted successfully!');
-            });
-        ;
-    </script>
+      </style>
 </body>
 </html>
