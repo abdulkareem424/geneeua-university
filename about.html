@@ -3,20 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestigious University</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>About Geneva International University</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
-        :root {
-            --gold: #D4AF37;
-            --black: #333333;
-            --white: #FFFFFF;
-            --light-gray: #F0F0F0;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -24,336 +15,100 @@
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            color: var(--black);
-            background-color: rgb(234, 223, 200);
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
+            color: #333;
+            background-color: #fff;
         }
 
-        .containe{
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-            
+            padding: 20px;
         }
 
         header {
-            background-color: var(--white);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            
-            width: 100%;
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background-color: #1a5f7a;
+            color: #fff;
+            text-align: center;
             padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--gold);
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
-
-        .nav-links {
+        main {
             display: flex;
-            list-style: none;
+            flex-wrap: wrap;
         }
 
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--black);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--light-gray);
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 36px;
-            color: var(--gold);
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .about {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .university-logo {
-            width: 150px;
-            height: auto;
-         transform: translateX(340%);
-        }
-
-        .about-description {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 18px;
-        }
-
-        .philosophy {
-            padding: 80px 0;
-            background-color: var(--light-gray);
-        }
-
-        .philosophy-content {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 18px;
-            text-align: center;
-        }
-
-        .goals {
-            padding: 80px 0;
-        }
-
-        .goals-list {
-            max-width: 800px;
-            margin: 0 auto;
-            list-style: none;
-        }
-
-        .goals-list li {
-            margin-bottom: 20px;
-            padding-left: 30px;
-            position: relative;
-        }
-
-        .goals-list li::before {
-            content: '•';
-            color: var(--gold);
-            font-size: 24px;
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .image-showcase {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-        }
-
-        .showcase-image {
-            width: 48%;
-            height: 900px;
-            object-fit: cover;
+        .section {
+            flex: 1 1 400px;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
-        .showcase-image:hover {
-            transform: scale(1.05);
+        .section:hover {
+            transform: translateY(-5px);
         }
 
-        .why-choose-us {
-            padding: 80px 0;
-            background-color: var(--light-gray);
+        .white-bg {
+            background-color: #fff;
         }
 
-        .reasons {
-            display: flex;
-            justify-content: space-between;
+        .cream-bg {
+            background-color: rgb(248, 243, 226);
         }
 
-        .reason {
-            width: 48%;
+        h2 {
+            color: #1a5f7a;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #1a5f7a;
+            padding-bottom: 5px;
         }
 
-        .reason h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            color: var(--gold);
-            margin-bottom: 20px;
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
         }
 
-        .image-gallery {
-            padding: 80px 0;
+        li {
+            margin-bottom: 10px;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
+        .expand-btn {
+            background-color: #1a5f7a;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
             cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
-        .gallery-image {
-            width: 100%;
-            height: 345px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+        .expand-btn:hover {
+            background-color: #0d2e3a;
         }
 
-        .gallery-item:hover .gallery-image {
-            transform: scale(1.1);
-        }
-
-        .image-description {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: var(--white);
-            padding: 10px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover .image-description {
-            transform: translateY(0);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .modal-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
-
-        .modal-image {
-            max-width: 90%;
-            max-height: 80%;
-            object-fit: contain;
-        }
-
-        .modal-description {
-            color: var(--white);
-            margin-top: 20px;
-            text-align: center;
-            max-width: 80%;
-        }
-
-        .close {
-            color: var(--white);
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .image-slider {
-            display: flex;
-            justify-content: center;
-            position: relative;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-        }
-
-        .slider-image {
-            position: absolute;
-        
-        
-          
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-
-        .slider-image.active {
-            opacity: 1;
-        }
-
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 30px;
-            color: var(--white);
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .slider-arrow.left {
-            left: 10px;
-        }
-
-        .slider-arrow.right {
-            right: 10px;
-        }
-        footer {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            padding: 2rem 0;
-            margin-top: auto;
-        }
-
-        .footer-link {
-            color: #d4af37;
-            transition: color 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: #ffffff;
-        }
-
-        .social-icon {
-            color: #d4af37;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-icon:hover {
-            color: #ffffff;
-            transform: translateY(-3px);
-        }
     </style>
-    
 </head>
 <body>
     <header class="bg-black text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center">
+            <div class="flex items-center " >
                 <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="w-12 h-12 rounded-md mr-8" style="background-color:  #fafafa;">
                 <h1 class="text-2xl font-bold logo-text">Geneva International University</h1>
             </div>
             <nav class="hidden md:block">
                 <ul class="flex space-x-4">
                     <li><a href="index.html" class="hover:text-primary-color transition">Home</a></li>
-                    <li><a href="about.html" class="hover:text-primary-color transition">about</a></li>
+                    <li><a href="contact.html" class="hover:text-primary-color transition">Contac</a></li>
                     <li><a href="courses.html" class="hover:text-primary-color transition">Courses</a></li>
                     <li><a href="admission.html" class="hover:text-primary-color transition">Admuission</a></li>
                 </ul>
@@ -370,132 +125,337 @@
         <button id="close-menu" class="text-2xl mb-4">×</button>
         <ul class="space-y-4">
             <li><a href="index.html" class="text-lg">Home</a></li>
-            <li><a href="about.html" class="text-lg">about</a></li>
+            <li><a href="contact.html" class="text-lg">Contact</a></li>
             <li><a href="courses.html" class="text-lg">Courses</a></li>
             <li><a href="admission.html" class="text-lg">Admuission</a></li>
         </ul>
     </div>
-    <script src="script.js"></script>
-    <section id="about" class="about">
-        <div class="containe">
-            <img src="images/INTENATIONAL UNIVERSITY OF GENEVA (10).png" alt="University Logo" class="university-logo">
-            <h2 class="section-title">About Our University</h2>
-            <p class="about-description">
-                Here at Geneva International University, we are committed to pioneering the integration of tradition and innovation within the realm of online education. Founded in 2016 initially as the Quality of Life Institute in Lebanon and reestablished in December 2023 as Geneva International University, we have broadened our scope to provide extensive online undergraduate and postgraduate programs worldwide. Our commitment to enhancing educational accessibility has evolved into a dedication to upholding global education standards and achieving online learning excellence.
 
-                Geneva International University is dedicated to offering educational programs that meet and surpass the highest standards of academic excellence. Our vibrant online learning environment is enriched by expert faculty members who are focused on equipping students from varied backgrounds with the knowledge, skills, and competencies needed to excel in their chosen fields and to make significant contributions to their communities.​
-                
-                Thank you for choosing Geneva International University. We look forward to supporting your educational journey and celebrating your future successes. 
-                
-                Warm regards,
-                
-                Dr. S. Al Hariri Founder,
-                
-                International University Of Geneva
-            </p>
-        </div>
-    </section>
-
-    <section id="philosophy" class="philosophy">
-        <div class="containe">
-            <h2 class="section-title">Our Philosophy</h2>
-            <div class="philosophy-content">
-                <p>
-                    The Philosophy of the International University of Geneva (IUG), an online university, is rooted in its mission to create a dynamic virtual learning environment. At its core, IUG is a community of learners comprising both students and faculty. Students at IUG seek to acquire knowledge and skills, enriched by exposure to diverse human, cultural, and experiential perspectives. Faculty members engage in scholarly and creative activities that contribute to their disciplines and enhance their teaching. This dual commitment to learning and teaching ensures that knowledge is effectively imparted to students. IUG aims to equip students with the competencies needed to achieve their personal and professional goals after graduation. Faculty members are encouraged to continuously advance their knowledge and expertise, thereby becoming more effective educators. This collective endeavor fosters critical thinking and a commitment to academic excellence, contributing to the betterment of society.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section id="goals" class="goals">
-        <div class="containe">
-            <h2 class="section-title">University Goals</h2>
-            <ul class="goals-list">
-                <li>Excellence in Education: To cultivate and reward excellence in the acquisition, advancement, and dissemination of knowledge.</li>
-                <li>Personal and Professional Fulfillment: To guide students in applying their knowledge and skills towards achieving personal and professional fulfillment.</li>
-                <li>Cultural Appreciation: To foster an appreciation of the historical and ongoing development of human culture.</li>
-                <li>Critical Skills Development: To develop critical thinking, effective communication, and lifelong learning skills</li>
-                <li>Ethical Values: To promote the values of ethical behavior, responsibility, and commitment.</li>
-                <li>Diverse Learning Opportunities: To provide academic programs, services, facilities, and technologies that offer diverse opportunities for learning.</li>
-                <li>Qualified Educators: To recruit and retain a diverse faculty of qualified educators, providing an environment conducive to their growth as teachers and scholars.</li>
-                <li>Intercultural Understanding: To foster intercultural understanding, preparing students to be active members of the global community.</li>
-                <li>Economic and Societal Contribution: To contribute to the economic and societal development of Geneva, Switzerland, and beyond.</li>
+    <main class="container">
+        <section id="administration" class="section white-bg">
+            <h2>University Administration</h2>
+            <ul>
+                <li><strong>University President:</strong> Chief executive and academic officer, representing the university in all official matters.</li>
+                <li><strong>University Council:</strong> Chaired by the President, includes Vice Presidents and Deans of Colleges. Ensures smooth academic and administrative operations.</li>
+                <li><strong>College Dean:</strong> Oversees college departments and makes decisions related to college management.</li>
+                <li><strong>Assistant Dean:</strong> Assists the Dean in managing academic affairs, faculty performance, and administrative matters.</li>
+                <li><strong>Department Head:</strong> Supervises faculty, assigns courses, and ensures student progress.</li>
             </ul>
-            <div class="image-showcase">
-                <img src="images/img6.png" alt="University Campus" class="showcase-image">
-                <img src="images/img7.png" alt="Students in Library" class="showcase-image">
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="why-choose-us" class="why-choose-us">
-        <div class="containe">
-            <h2 class="section-title">Why GENEVA</h2>
-            <div class="reasons">
-                <div class="reason">
-                    <h3>Geneva Courses</h3>
-                    <p>International University of Geneva, we offer a diverse range of courses designed to equip students with the knowledge, skills, and experience needed to excel in their chosen fields. Our courses are structured to provide both theoretical foundations and practical applications, ensuring a holistic and impactful learning experience.</p>
-                </div>
-                <div class="reason">
-                    <h3>Certificate</h3>
-                    <p>Our certificates are designed to provide formal recognition of students' achievements and the skills they have acquired through our rigorous academic programs. Each certificate is a testament to the high standards and international recognition of the International University of Geneva.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <section id="guidelines" class="section cream-bg">
+            <h2>Student Guidelines</h2>
+            <ul>
+                <li>Neutrality and Inclusivity: The university promotes tolerance, respect, and open dialogue.</li>
+                <li>Order and Conduct: Students must adhere to university rules and respect academic freedom.</li>
+                <li>Freedom of Expression: Verbal abuse against any university community member may result in suspension.</li>
+                <li>Classroom Etiquette: Mobile phones must be turned off during lectures, and cameras should be off during online exams for diploma and bachelor's students.</li>
+                <li>Smoking Ban: Smoking is strictly prohibited within the university campus.</li>
+            </ul>
+        </section>
 
-    <section id="gallery" class="image-gallery">
-        <div class="containe">
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="images/img8.png" alt="University Life 1" class="gallery-image">
-                   
-                </div>
-                <div class="gallery-item">
-                    <img src="images/img9.png" alt="University Life 2" class="gallery-image">
-                   
-                </div>
-                <div class="gallery-item">
-                    <img src="images/img10.png" alt="University Life 3" class="gallery-image">
-                   
-                </div>
-                <div class="gallery-item">
-                    <img src="images/img11.png" alt="University Life 4" class="gallery-image">
-                   
-                   
-                 
-                </div>
-                <div class="gallery-item">
-                    <img src="images/img12.png" alt="University Life 4" class="gallery-image">
-                   
-                   
-                 
-                </div>
-                <div class="gallery-item">
-                    <img src="images/img13.png" alt="University Life 6" class="gallery-image">
-                
-                </div>
+        <section id="admissions" class="section white-bg">
+            <h2>Admissions and Registration</h2>
+            <ul>
+                <li>Bachelor's Degree Eligibility: High school diploma or equivalent required.</li>
+                <li>Registration Process: Annual registration with administrative fee and first tuition installment.</li>
+                <li>Online Registration: Submit documents in PDF format, receive confirmation email.</li>
+                <li>University ID Card: Issued during the first semester and renewed annually.</li>
+                <li>Graduate Programs: Open registration throughout the academic year.</li>
+                <li>Graduate Admissions Testing: Written exam and oral interview required.</li>
+            </ul>
+            <button class="expand-btn" onclick="toggleContent('admissions-extra')">Read More</button>
+            <div id="admissions-extra" class="hidden">
+                <ul>
+                    <li>Re-registration: Required at the beginning of each academic year.</li>
+                    <li>Diploma Duration: 1.5 years, focusing on essential skills and specialization.</li>
+                    <li>Changing Specializations: Requires passing written and oral exams.</li>
+                    <li>Withdrawal: No refund of fees or return of certificates.</li>
+                    <li>Disciplinary Period: Students under disciplinary action are not eligible for academic statements.</li>
+                    <li>Graduation Requirement: Degrees awarded only to students completing studies within specified timeframe.</li>
+                </ul>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <div class="image-slider">
-        <img src="images/img14.png" alt="Slider Image 1" class="slider-image active">
-        <img src="images/img15.png" alt="Slider Image 2" class="slider-image">
-        <img src="images/img16.png" alt="Slider Image 3" class="slider-image">
-        <img src="images/img17.png" alt="Slider Image 4" class="slider-image">
-        <div class="slider-arrow left">&lt;</div>
-        <div class="slider-arrow right">&gt;</div>
+        <section id="academic" class="section cream-bg">
+            <h2>Academic Information</h2>
+            <ul>
+                <li>Enrollment Period: First week of May to end of July for Diplomas and Bachelor's degrees.</li>
+                <li>Start of Classes: Third week of September for Diplomas and Bachelor's degrees.</li>
+                <li>Academic Year End: June for Diplomas and Bachelor's degrees.</li>
+                <li>Semester Duration: 3.5 months for Diplomas and Bachelor's degrees.</li>
+                <li>Program Durations:
+                    <ul>
+                        <li>Diploma: 1.5 years (2 years for students with special needs)</li>
+                        <li>Bachelor's: 2 years</li>
+                        <li>Master's: 1.5 years</li>
+                        <li>Doctoral: 2 years (can be completed in 1.5 years)</li>
+                    </ul>
+                </li>
+            </ul>
+            <button class="expand-btn" onclick="toggleContent('academic-extra')">Read More</button>
+            <div id="academic-extra" class="hidden">
+                <ul>
+                    <li>Online and In-Person Instruction: Education conducted online using specialized platforms, particularly Zoom.</li>
+                    <li>Attendance: Mandatory for students, with participation marks affecting overall evaluation.</li>
+                    <li>Examinations: Schedule determined for each subject, with specific conduct rules.</li>
+                    <li>Grading System: Includes grades from A to D with specific GPAs assigned.</li>
+                    <li>Re-examination Policy: Available for students who fail to meet minimum grade requirements.</li>
+                    <li>Appeal of Grades: Students may appeal within one week of receiving grades.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="financial" class="section white-bg">
+            <h2>Financial Policies and Aid</h2>
+            <ul>
+                <li>Tuition and Fees: Must be paid as per university schedule.</li>
+                <li>Refund Policy: Provided according to university policy with specific deadlines and conditions.</li>
+                <li>Payment Installments: Available subject to university financial policies and deadlines.</li>
+                <li>Financial Aid: Available for eligible students, including scholarships and grants.</li>
+                <li>Late Payment Penalties: May be incurred as per university financial policies.</li>
+                <li>Financial Counseling: Offered to assist students with managing finances.</li>
+            </ul>
+            <h3>Scholarship Opportunities for Graduate Students</h3>
+            <ul>
+                <li>Teaching Undergraduate Courses: Available for enrolled graduate students with expertise in the subject.</li>
+                <li>Up to 20% Scholarship:
+                    <ul>
+                        <li>Teaching and Workshop Facilitation</li>
+                        <li>Administrative Support</li>
+                        <li>Marketing and Promotion</li>
+                    </ul>
+                </li>
+            </ul>
+            <button class="expand-btn" onclick="toggleContent('financial-extra')">Read More</button>
+            <div id="financial-extra" class="hidden">
+                <h4>Application Requirements for Scholarships:</h4>
+                <ul>
+                    <li>Resume/CV</li>
+                    <li>Academic Transcripts</li>
+                    <li>Teaching Statement or Letter of Intent</li>
+                    <li>Letters of Recommendation</li>
+                    <li>Course Proposal (for teaching opportunities)</li>
+                </ul>
+                <p>For inquiries, contact the Registrar's Office or the Scholarship Office:</p>
+                <ul>
+                    <li>Email: Admin@genevaiu.com</li>
+                    <li>Website: www.genevaiu.com</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <div id="university-faq"></div>
+        <style>
+            #university-faq h2 {
+                color: #5c4f3d;
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+    
+            .faq-item {
+                background: #fff;
+                border-radius: 8px;
+                margin-bottom: 1rem;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                border: 1px solid #e0d8c0;
+            }
+    
+            .faq-question {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem;
+                cursor: pointer;
+                font-weight: bold;
+                color: #5c4f3d;
+            }
+    
+            .faq-answer {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                padding: 0 1rem;
+            }
+    
+            .faq-answer p {
+                padding-bottom: 1rem;
+                color: #3a3226;
+            }
+    
+            .faq-item.active {
+                box-shadow: 0 2px 4px rgba(92, 79, 61, 0.1);
+            }
+    
+            .faq-item.active .faq-answer {
+                max-height: 1000px;
+            }
+    
+            .toggle-icon {
+                transition: transform 0.3s ease;
+            }
+    
+            .faq-item.active .toggle-icon {
+                transform: rotate(45deg);
+            }
+            #learn-more-btn {
+                display: block;
+                margin: 1rem auto;
+                padding: 0.75rem 1.5rem;
+                background-color: #8b7b65;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                font-size: 1rem;
+                font-weight: bold;
+            }
+    
+            #learn-more-btn:hover {
+                background-color: #6e614f;
+            }
+        </style>
+    
+        <h2>Frequently Asked Questions - International University of Geneva</h2>
+    
+        <div id="faq-container">
+            <!-- FAQ items will be dynamically inserted here -->
+        </div>
+    
+        <button id="learn-more-btn">Learn More</button>
+    
+        <script>
+            const faqData = [
+                {
+                    question: "Is the International University of Geneva accredited?",
+                    answer: "Yes, the International University of Geneva's degree programs are accredited by the Ministry of Education in the UAE and the Foreign and Commonwealth Office of the United Kingdom. The British Psychological Society is currently processing accreditation for psychology programs."
+                },
+                {
+                    question: "How can I apply to the International University of Geneva?",
+                    answer: "Students can apply online through our website (www.Genevaiu.com) or by visiting the admission department and submitting the required documents."
+                },
+                {
+                    question: "What are the general requirements for admission?",
+                    answer: "For undergraduate programs: Bachelor of Business Administration requires a minimum high school average of 70% for Advanced or Elite Track or 75% for General Track. Bachelor of Human Resource Management requires a minimum high school average of 70%. Bachelor of Accounting requires a minimum high school average of 75% for Elite Track or 80% for Advanced Track. For graduate programs: Master of Business Administration and Master of Education require an accredited bachelor's degree with a minimum GPA of 3.0."
+                },
+                {
+                    question: "Are there any entrance tests required for admission?",
+                    answer: "Yes, entrance tests may be required depending on the major chosen."
+                },
+                {
+                    question: "Are English language proficiency exams required?",
+                    answer: "Yes, English language proficiency exams are mandatory for all postgraduate programs. We accept IELTS Academic 5, TOEFL IBT/PBT/CBT, and Em SAT. The desired result depends on the program."
+                },
+                {
+                    question: "How do I register for courses once I've been admitted?",
+                    answer: "Admitted students will be contacted by the admissions representatives, coordinating with academic advisors, to choose courses according to the curriculum."
+                },
+                {
+                    question: "What is CAMS?",
+                    answer: "CAMS is a reliable student information system that connects prospective and current students, faculty, and staff through portals to manage admissions, registration, and student records."
+                },
+                {
+                    question: "Where can I see the Academic Calendar?",
+                    answer: "Please visit our website (www.genevaiu.com) to view the academic calendar."
+                },
+                {
+                    question: "How many semesters are in an academic year?",
+                    answer: "There are two regular semesters (Fall & Spring) and two optional semesters (Summer)."
+                },
+                {
+                    question: "Is it mandatory to attend all the classes?",
+                    answer: "Yes, attendance is mandatory. Currently, classes are held online, and in-person attendance will be required later once the campus relocates."
+                },
+                {
+                    question: "Can I postpone a semester?",
+                    answer: "Yes, students can request to hold or postpone a semester by contacting the registration department."
+                },
+                {
+                    question: "What are the Colleges at the International University of Geneva?",
+                    answer: "The colleges are: College of Smart Business Administration, College of Education, College of Psychology, and College of Special Education."
+                },
+                {
+                    question: "What programs are offered?",
+                    answer: "Bachelor's degrees in Business Administration, Human Resource Management, Accounting, Special Education, Education, and Psychology. Professional Diplomas in Education, Shadow Teaching, and Learning Difficulties. Master's and Doctoral degrees are offered in all university colleges."
+                },
+                {
+                    question: "Is the International University of Geneva open to all nationalities?",
+                    answer: "Yes, the university welcomes students from all over the world."
+                },
+                {
+                    question: "Does the International University of Geneva have agreements with other universities?",
+                    answer: "Yes, the University of Geneva has agreements with universities in the UAE in different faculties."
+                },
+                {
+                    question: "Does the student pay for the university with which the International University of Geneva cooperates?",
+                    answer: "Yes, a special discount is given to students who register by the International University of Geneva."
+                },
+                {
+                    question: "Does the International University of Geneva offer scholarships?",
+                    answer: "Yes, at present, scholarships are dedicated to students with special needs, learning difficulties, or those facing special circumstances in their home countries. These scholarships are offered in the form of tuition discounts."
+                },
+                {
+                    question: "What are the admission fees? Are they refundable?",
+                    answer: "The admission fee is AED 1260 (inclusive of 5% VAT) and is non-refundable."
+                },
+                {
+                    question: "Does the International University of Geneva accept students who have not completed high school?",
+                    answer: "Yes, the university accepts such students, provided they submit the required documentation to the registration department."
+                },
+                {
+                    question: "Does the International University of Geneva offer student residency visas?",
+                    answer: "This matter is currently under review and will be considered once the university relocates to its permanent campus."
+                },
+                {
+                    question: "Are there any other faculties at the International University of Geneva?",
+                    answer: "Yes, it is available in postgraduate programs, but it is certified by the British Foreign Office."
+                }
+            ];
+    
+            const faqContainer = document.getElementById('faq-container');
+            const learnMoreBtn = document.getElementById('learn-more-btn');
+    
+            function createFaqItem(question, answer) {
+                const faqItem = document.createElement('div');
+                faqItem.className = 'faq-item';
+                faqItem.innerHTML = `
+                    <div class="faq-question">
+                        ${question}
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>${answer}</p>
+                    </div>
+                `;
+                return faqItem;
+            }
+    
+            function displayFAQs(start, end) {
+                for (let i = start; i < end && i < faqData.length; i++) {
+                    const faqItem = createFaqItem(faqData[i].question, faqData[i].answer);
+                    faqContainer.appendChild(faqItem);
+                }
+            }
+    
+            // Initially display first 5 FAQs
+            displayFAQs(0, 5);
+    
+            learnMoreBtn.addEventListener('click', () => {
+                // Display remaining FAQs
+                displayFAQs(5, faqData.length);
+                learnMoreBtn.style.display = 'none';
+            });
+    
+            faqContainer.addEventListener('click', (e) => {
+                if (e.target.closest('.faq-question')) {
+                    const faqItem = e.target.closest('.faq-item');
+                    faqItem.classList.toggle('active');
+                }
+            });
+        </script>
     </div>
-
-    <div id="imageModal" class="modal">
-        <span class="close">&times;</span>
-        <div class="modal-content">
-            <img id="modalImage" class="modal-image">
-            <p id="modalDescription" class="modal-description"></p>
-        </div>
-    </div>
-
     <footer class="text-center lg:text-left">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid lg:grid-cols-3 gap-8">
@@ -510,7 +470,7 @@
                         <a href="admission.html" class="footer-link">Admissions</a>
                     </p>
                     <p class="mb-4">
-                        <a href="about.html" class="footer-link">about</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
                     </p>
                     <p>
                         <a href="courses.html" class="footer-link">Courses</a>
@@ -551,8 +511,123 @@
                 </div>
             </div>
         </div>
+        <style>
+            footer {
+                   background-color: #1a1a1a;
+                   color: #ffffff;
+                   padding: 2rem 0;
+                   margin-top: auto;
+               }
        
+               .footer-link {
+                   color: #d4af37;
+                   transition: color 0.3s ease;
+               }
+       
+               .footer-link:hover {
+                   color: #ffffff;
+               }
+       
+               .social-icon {
+                   color: #d4af37;
+                   transition: color 0.3s ease, transform 0.3s ease;
+               }
+       
+               .social-icon:hover {
+                   color: #ffffff;
+                   transform: translateY(-3px);
+               }
+       </style>   
     </footer>
-   
+ <div class="text-center p-6 bg-black">         
+            <a class="footer-link font-semibold" href="#"><span style="color: #ffffff;">© 2023 Copyright:</span>Geneva International University</a>
+        </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelector('form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would typically handle the login process
+                alert('Login functionality would be implemented here.');
+            });
+
+            // Add subtle animation to form inputs
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                input.addEventListener('blur', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+      <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+      
+        // Page transition effect
+        document.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', function(e) {
+            if (this.hostname === window.location.hostname) {
+              e.preventDefault();
+              document.body.classList.add('fade-out');
+              setTimeout(() => {
+                window.location = this.href;
+              }, 300);
+            }
+          });
+        });
+      
+        // Fade in on page load
+        window.addEventListener('pageshow', function(event) {
+          if (event.persisted) {
+            document.body.classList.remove('fade-out');
+          }
+        });
+      
+        // Smooth scroll animation for footer links
+        document.querySelectorAll('footer a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+            });
+          });
+        });
+      </script>
+      
+      <style>
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      
+        footer {
+          animation: fadeIn 0.5s ease-out;
+        }
+        .fade-out {
+          opacity: 0;
+          transition: opacity 0.3s ease-out;
+        }
+      </style>
+    <script>
+        // Simple map initialization (replace with actual map implementation)
+        function initMap() {
+            const mapDiv = document.getElementById('map');
+            mapDiv.innerHTML = '<p class="text-center py-20">Map goes here</p>';
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            initMap();
+
+            document.querySelector('form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Application submitted successfully!');
+            });
+        });
+    </script>  
+      <script src="script.js"></script>
 </body>
 </html>
