@@ -7,10 +7,6 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="min-h-screen flex flex-col">
@@ -23,9 +19,9 @@
             <nav class="hidden md:block">
                 <ul class="flex space-x-4">
                     <li><a href="index.html" class="hover:text-primary-color transition">Home</a></li>
-                    <li><a href="about.html" class="hover:text-primary-color transition">Contac</a></li>
+                    <li><a href="about.html" class="hover:text-primary-color transition">About &amp; Contact</a></li>
                     <li><a href="courses.html" class="hover:text-primary-color transition">Courses</a></li>
-                    <li><a href="admission.html" class="hover:text-primary-color transition">Admuission</a></li>
+                    <li><a href="admission.html" class="hover:text-primary-color transition">Admission</a></li>
                 </ul>
             </nav>
         
@@ -40,21 +36,12 @@
         <button id="close-menu" class="text-2xl mb-4">×</button>
         <ul class="space-y-4">
             <li><a href="index.html" class="text-lg">Home</a></li>
-            <li><a href="about.html" class="text-lg">about</a></li>
-            <li><a href="courses.html" class="text-lg">Courses</a></li>
-            <li><a href="admission.html" class="text-lg">Admuission</a></li>
-        </ul>
-    </div>
-
-    <div id="side-menu" class="side-menu neumorphic p-4">
-        <button id="close-menu" class="text-2xl mb-4">×</button>
-        <ul class="space-y-4">
-            <li><a href="index.html" class="text-lg">Home</a></li>
-            <li><a href="about.html" class="text-lg">About</a></li>
+            <li><a href="about.html" class="text-lg">About &amp; Contact</a></li>
             <li><a href="courses.html" class="text-lg">Courses</a></li>
             <li><a href="admission.html" class="text-lg">Admission</a></li>
         </ul>
     </div>
+    <div id="overlay" class="overlay"></div>
 
     <main class="container mx-auto flex-grow p-8">
         <h1 class="text-4xl font-bold mb-8 text-center">Latest University News</h1>
@@ -178,14 +165,6 @@
 
         document.getElementById('closeModal').addEventListener('click', () => {
             document.getElementById('modal').classList.add('hidden');
-        });
-
-        document.getElementById('menu-toggle').addEventListener('click', () => {
-            document.getElementById('side-menu').classList.add('active');
-        });
-
-        document.getElementById('close-menu').addEventListener('click', () => {
-            document.getElementById('side-menu').classList.remove('active');
         });
 
         renderNews();
