@@ -17,9 +17,9 @@
             <nav class="hidden md:block">
                 <ul class="flex space-x-4">
                     <li><a href="index.html" class="hover:text-primary-color transition">Home</a></li>
-                    <li><a href="about.html" class="hover:text-primary-color transition">Contac</a></li>
+                    <li><a href="about.html" class="hover:text-primary-color transition">About &amp; Contact</a></li>
                     <li><a href="courses.html" class="hover:text-primary-color transition">Courses</a></li>
-                    <li><a href="admission.html" class="hover:text-primary-color transition">Admuission</a></li>
+                    <li><a href="admission.html" class="hover:text-primary-color transition">Admission</a></li>
                 </ul>
             </nav>
         
@@ -29,6 +29,16 @@
             </div>
         </div>
     </header>
+    <div id="side-menu" class="side-menu neumorphic p-4">
+        <button id="close-menu" class="text-2xl mb-4">×</button>
+        <ul class="space-y-4">
+            <li><a href="index.html" class="text-lg">Home</a></li>
+            <li><a href="about.html" class="text-lg">About &amp; Contact</a></li>
+            <li><a href="courses.html" class="text-lg">Courses</a></li>
+            <li><a href="admission.html" class="text-lg">Admission</a></li>
+        </ul>
+    </div>
+    <div id="overlay" class="overlay"></div>
     <header class="bg-black text-white p-4 flex justify-between items-center">
         <h1 class="text-xl">select your speciality</h1>
         <div class="relative">
@@ -68,7 +78,7 @@
         const specialties = {
             psychology: {
                 description: "Explore the human mind and behavior with our programs in Psychology.",
-                image: "images/psychology.jpg",
+                image: "images/img1.jpg",
                 courses: [
                     { title: "Bachelor's in Psychology", description: "Explore the human mind and behavior with our Bachelor's program in Psychology." },
                     { title: "Diploma in Psychology", description: "Gain foundational knowledge with our Diploma program in Psychology." },
@@ -78,7 +88,7 @@
             },
             education: {
                 description: "Learn the art of teaching and education with our programs in Education.",
-                image: "images/education.jpg",
+                image: "images/img2.png",
                 courses: [
                     { title: "Bachelor's in Education", description: "Learn the art of teaching with our Bachelor's program in Education." },
                     { title: "Diploma in Education", description: "Develop foundational skills in education with our Diploma program." },
@@ -88,7 +98,7 @@
             },
             special_education: {
                 description: "Learn to support students with special needs with our programs in Special Education.",
-                image: "images/special_education.jpg",
+                image: "images/img3.png",
                 courses: [
                     { title: "Bachelor's in Special Education", description: "Learn to support students with special needs with our Bachelor's program in Special Education." },
                     { title: "Diploma in Special Education", description: "Acquire foundational skills in special education with our Diploma program." },
@@ -98,7 +108,7 @@
             },
             business_admin: {
                 description: "Learn the skills to succeed in business with our programs in Business Administration.",
-                image: "images/business_admin.jpg",
+                image: "images/img4.png",
                 courses: [
                     { title: "Bachelor's in Business Administration", description: "Learn the skills to succeed in business with our Bachelor's program in Business Administration." },
                     { title: "Diploma in Business Administration", description: "Build foundational business skills with our Diploma program." },
@@ -108,7 +118,7 @@
             },
             freshman_program: {
                 description: "Designed specifically for students with learning difficulties, our freshman program provides a supportive environment to help you succeed.",
-                image: "images/freshman_program.jpg",
+                image: "images/img5.png",
                 courses: [
                     { title: "Freshman Program for Students with Learning Difficulties", description: "Our freshman program offers a supportive environment tailored for students with learning difficulties." },
                 {title:"diploma in buisness adminstration"},
@@ -154,5 +164,6 @@
             }
         });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
